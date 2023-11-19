@@ -41,7 +41,7 @@ public class XYZShop {
     void Register(User u) {
         System.out.println("Enter your name:");
         String uName = sc2.nextLine();
-        if(uName.trim().isEmpty()){
+        if (uName.trim().isEmpty()) {
             System.out.println("Your name must not be null");
             return;
         }
