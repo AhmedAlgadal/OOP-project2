@@ -23,9 +23,9 @@ public class XYZShop{
             System.out.println("Enter your name:");
             c.setuName(sc2.nextLine());
             System.out.println("Enter your Email:");
-            c.setuEmail(sc2.nextLine());
+            c.setuEmail(sc2.nextLine()); //we must check the email format before we set it
             System.out.println("Enter your PassWord:");
-            c.setuPassword(sc2.nextLine());
+            c.setuPassword(sc2.nextLine()); //must check also the password, cannot be separated by space
             System.out.println("Welcome "+ c.getuName()+" "+ c.getuEmail());
         }else if (n==2){
             System.out.println("Enter your name:");
