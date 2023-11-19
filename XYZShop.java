@@ -23,10 +23,18 @@ public class XYZShop{
             System.out.println("Enter your name:");
             c.setuName(sc2.nextLine());
             System.out.println("Enter your Email:");
-            c.setuEmail(sc2.nextLine()); //we must check the email format before we set it
+            //we must check the email format before we set it and must not be empty
+            String uMail = sc2.nextLine();
+            if (!uMail.contains(" ") && uMail.contains("@")) {
+                c.setuEmail(uMail);
+            }
             System.out.println("Enter your PassWord:");
-            c.setuPassword(sc2.nextLine()); //must check also the password, cannot be separated by space
-            System.out.println("Welcome "+ c.getuName()+" "+ c.getuEmail());
+            //must check also the password, cannot be separated by space or be empty
+            String uPassword = sc2.nextLine();
+            if (!uPassword.contains(" ") && uPassword.contains("@")) {
+                c.setuPassword(uPassword);
+            }
+            System.out.println("Welcome "+ c.getuName()+"! "+ "Your username is: " + c.getuEmail());
         }else if (n==2){
             System.out.println("Enter your name:");
             s.setuName(sc2.nextLine());
@@ -34,7 +42,7 @@ public class XYZShop{
             s.setuEmail(sc2.nextLine());
             System.out.println("Enter your PassWord:");
             s.setuPassword(sc2.nextLine());
-            System.out.println("Welcome "+ s.getuName()+" "+ s.getuEmail());
+            System.out.println("Welcome "+ s.getuName()+"! "+ "Your username is: " + s.getuEmail());
         }
 
     }
