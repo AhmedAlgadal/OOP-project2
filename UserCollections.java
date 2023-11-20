@@ -3,8 +3,11 @@ import java.util.ArrayList;
 public class UserCollections {
     private static ArrayList<User> users;
 
-    public void storeUser(User user) {
+    public UserCollections(){
         users = new ArrayList<User>();
+    }
+
+    public void storeUser(User user) {
         users.add(user);
     }
 
@@ -17,7 +20,6 @@ public class UserCollections {
                         user.getuEmail() +
                         " User Password: " + user.getuPassword() + " User Active: " + user.getActive());
                 System.out.println("==================================================");
-                System.out.println("\n");
             }
         }
 
