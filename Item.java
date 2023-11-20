@@ -4,6 +4,7 @@ public class Item {
     private String itemName;
     private double price;
     private int quantity;
+    private int boughtTimes;
 
     public Item() {
     }
@@ -46,5 +47,10 @@ public class Item {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    public int BoughtTimes() {
+       return boughtTimes ++;
+    }
+
 
 }

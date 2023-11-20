@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Seller extends User {
 
     private ArrayList<Item> products;
+    private double money;
 
     public Seller() {
         products = new ArrayList<Item>();
@@ -11,10 +12,12 @@ public class Seller extends User {
     public Seller(String uId, String uName, String uEmail, String uPassword, boolean isActive) {
         super(uId, uName, uEmail, uPassword, isActive);
         products = new ArrayList<Item>();
+        money=0;
     }
 
     public void addProducts(Item item) {
         products.add(item);
+
     }
 
     public void removeProducts(Item item) {
@@ -25,10 +28,10 @@ public class Seller extends User {
         int index = 1;
         for (Item item : products) {
             if(item.getQuantity()==0){
-            System.out.println("#" + index + " "+item.getItemName() +" out of stock");
+            System.out.println("#" + index + " "+item.getItemName() +" out of stock " + item.BoughtTimes()+ " times");
             }
             else{
-            System.out.println("#" + index + " "+item.getItemName());
+            System.out.println("#" + index + " "+item.getItemName()+" "+ item.BoughtTimes()+ " times");
             }
             index++;
         }
@@ -36,15 +39,13 @@ public class Seller extends User {
 
         public void getStatistics() {
         int index = 1;
-        int buyTimes= 0;
         for (Item item : products) {
             if(item.getQuantity()==0){
-                buyTimes++;
-            System.out.println("#" + index + " "+item.getItemName() +" out of stock" + " bought "+ buyTimes+ " times");
+            System.out.println("#" + index + " "+item.getItemName() +" out of stock" + " bought "+ item.BoughtTimes()+ " times");
             }
             else{
                 
-            System.out.println("#" + index + " "+item.getItemName());
+            System.out.println("#" + index + " "+item.getItemName()+ item.BoughtTimes()+ " times");
             }
             index++;
         }

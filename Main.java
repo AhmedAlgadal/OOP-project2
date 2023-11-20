@@ -10,15 +10,19 @@ public class Main {
 
         Seller seller = new Seller("001", "khald", "khald@ah.com", "111k", true);
 
+        Customer customer = new Customer("c001", "ahmed", "ahmed@a.com", "144a", true, 5000);
+        customer.buyProducts(i1);
+        customer.buyProducts(i2);
+
         seller.addProducts(i1);
         seller.addProducts(i2);
         seller.addProducts(i2);
         seller.addProducts(i3);
-
+        
         seller.displayProducts();
+        // customer.displayProducts();
 
-        seller.removeProducts(i2);
-
+        // seller.removeProducts(i2);
         // seller.displayProducts();
         
     }

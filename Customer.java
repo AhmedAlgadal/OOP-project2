@@ -24,6 +24,32 @@ public class Customer extends User {
         this.balance = balance;
     }
 
+    public void buyProducts(Item item){
+        // -- update the balance and item qut and Seller money ++.
+        this.boughtItem.add(item);
+        item.BoughtTimes();
+        // seller.money++;
+    }
+
+    public void deleteOrder(Item item){
+        //++ update the balance and item qut and Seller money --.
+        this.boughtItem.remove(item);
+    }
+
+    public void displayProducts() {
+        int index = 1;
+        for (Item item : boughtItem) {
+            if(item.getQuantity()==0){
+            System.out.println("#" + index + " "+item.getItemName() +" out of stock");
+            }
+            else{
+            System.out.println("#" + index + " "+item.getItemName());
+            }
+            index++;
+        }
+    }
+
+
 
     
 }
