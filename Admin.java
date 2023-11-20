@@ -3,6 +3,7 @@ import java.util.*;
 public class Admin extends User {
 
     Scanner scanner = new Scanner(System.in);
+    Scanner scanner2 = new Scanner(System.in);
     int selection;
 
     public Admin(String uId, String uName, String uEmail, String uPassword) {
@@ -76,6 +77,8 @@ public class Admin extends User {
                 default:
                     System.out.println("Invalid selection. Please try again.");
             }
+            System.out.println("press Enter...");
+            scanner2.nextLine();
         } while (selection != 11);
     }
 
