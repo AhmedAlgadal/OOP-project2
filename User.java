@@ -4,7 +4,7 @@ public abstract class User {
     String uName;
     String uEmail;
     String uPassword;
-    boolean isActive;
+    boolean isActive = false;
 
     public User() {
     }

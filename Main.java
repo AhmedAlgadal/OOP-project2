@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
 
-        // XYZShop shop = new XYZShop();
+/*        // XYZShop shop = new XYZShop();
         // shop.getStaring();
 
         Item i1= new Item("001", "book", 10, 3);
@@ -23,7 +23,28 @@ public class Main {
         // customer.displayProducts();
 
         // seller.removeProducts(i2);
-        // seller.displayProducts();
-        
+        // seller.displayProducts();*/
+        Seller seller = new Seller("001", "khald", "khald@ah.com", "111k", true);
+        Seller seller1 = new Seller("002", "Mary", "mr@ah.com", "112k", true);
+        Seller seller2 = new Seller("003", "Ali", "ali@ah.com", "113k", false);
+        Seller seller3 = new Seller("004", "Lana", "la@ah.com", "114k", false);
+        UserCollections userColl = new UserCollections();
+        userColl.storeUser(seller);
+        userColl.storeUser(seller1);
+        userColl.storeUser(seller2);
+        userColl.storeUser(seller3);
+
+
+
+        Admin admin = new Admin("123", "Admin","admin@xyz.com", "root");
+       // admin.adminBoard();
+        System.out.println(" Active Users");
+        admin.displayAllUsers();
+
+        System.out.println(" Inactive Users");
+        admin.displayInactiveUsers();
+
+
+
     }
 }
