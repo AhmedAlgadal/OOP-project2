@@ -2,14 +2,14 @@ import java.util.Scanner;
 
 public class XYZShop {
     String name;
-    User c;
-    User s;
+    User customer;
+    User seller;
     Scanner sc1;
     Scanner sc2;
 
     public XYZShop() {
-        c = new Customer();
-        s = new Seller();
+        customer = new Customer();
+        seller = new Seller();
         sc1 = new Scanner(System.in);
         sc2 = new Scanner(System.in);
     }
@@ -23,9 +23,9 @@ public class XYZShop {
                 int userType = Integer.parseInt(option);
                 if (userType == 1 || userType == 2) {
                     if (userType == 1) {
-                        Register(c);
+                        Register(customer);
                     } else if (userType == 2) {
-                        Register(s);
+                        Register(seller);
                     }
                     break;
                 } else {
@@ -42,7 +42,7 @@ public class XYZShop {
         System.out.println("Enter your name:");
         String uName = sc2.nextLine();
         if (uName.trim().isEmpty()) {
-            System.out.println("Your name must not be null");
+            System.out.println("Your name must be not null");
             return;
         }
         u.setuName(uName.trim());

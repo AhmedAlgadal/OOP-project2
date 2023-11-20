@@ -1,14 +1,19 @@
+import java.util.ArrayList;
+
 public class Customer extends User {
     // balance , bought item ,
 
     private double balance;
-    private Item boughtItem;
+    private ArrayList<Item> boughtItem;
 
     public Customer() {
+        boughtItem= new ArrayList<Item>();
     }
 
-    public Customer(String uId, String uName, String uEmail, String uPassword, boolean isActive) {
+    public Customer(String uId, String uName, String uEmail, String uPassword, boolean isActive, double balance) {
         super(uId, uName, uEmail, uPassword, isActive);
+        this.balance= balance;
+        boughtItem= new ArrayList<Item>();
     }
 
     public double getBalance() {
@@ -19,11 +24,6 @@ public class Customer extends User {
         this.balance = balance;
     }
 
-    public Item getBoughtItem() {
-        return boughtItem;
-    }
 
-    public void setPurchasedItem(Item purchasedItem) {
-        this.boughtItem = purchasedItem;
-    }
+    
 }
