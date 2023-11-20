@@ -15,7 +15,7 @@ public class UserCollections {
     public static void displayInactiveUsers() {
 
         for (User user : users) {
-            if (user.getActive()) {
+            if (!user.getActive()) {
                 System.out.println(" User ID: " + user.getuId() + " User Name: " + user.getuName() + " User Email: " +
                         user.getuEmail() +
                         " User Password: " + user.getuPassword() + " User Active: " + user.getActive());
