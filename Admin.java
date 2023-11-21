@@ -82,9 +82,16 @@ public class Admin extends User {
         } while (selection != 11);
     }
 
-    private static void activateUser() {
+    private  void activateUser() {
         // Implement code to activate a user
-        System.out.println("\nImplement code to activate a user.\n");
+        UserCollections.displayInactiveUsers();
+        System.out.println("Choose the User ID to activate it:");
+        int s= scanner.nextInt();
+        UserCollections.getUsers(s-1).setActive(true);
+        System.out.println( UserCollections.getUsers(s-1).getuName()
+        +" is now active");
+        System.out.println(UserCollections.getUsers(s-1).getActive());
+
     }
 
     public void displayInactiveUsers() {

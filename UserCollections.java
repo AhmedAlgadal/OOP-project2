@@ -33,6 +33,11 @@ public class UserCollections {
         System.out.println("==================================================");
             }
             }
+
+
+    public static User getUsers(int n) {
+        return users.get(n);
+    }
 }
 
 
