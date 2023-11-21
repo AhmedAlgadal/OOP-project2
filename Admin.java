@@ -111,8 +111,7 @@ public class Admin extends User {
 
     public void displayAllProducts() {
         // Implement code to display all products
-        System.out.println("\nImplement code to display all products\n");
-
+        ItemCollections.displayAllItems();
     }
 
     public void displayAllUsers() {
@@ -122,12 +121,12 @@ public class Admin extends User {
 
     public void displayCustomers() {
         // Implement code to display customers
-        System.out.println("\nImplement code to display customers\n");
+        UserCollections.displayAllCustomers();
     }
 
     public void displaySellers() {
         // Implement code to display sellers
-        System.out.println("\nImplement code to display sellers\n");
+        UserCollections.displayAllSellers();
     }
 
     public void approveProducts() {
