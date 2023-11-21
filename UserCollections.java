@@ -33,6 +33,24 @@ public class UserCollections {
         System.out.println("==================================================");
             }
             }
+    public static void displayAllCustomers() {
+        for (User user : users) {
+            if (user instanceof Customer){
+        System.out.println("#" +" User ID: " + user.getuId() + " User Name: " + user.getuName() + " User Email: " + user.getuEmail() +
+                " User Password: " + user.getuPassword() + " User Active: " + user.getActive());
+        System.out.println("==================================================");
+            }
+            }
+            }
+    public static void displayAllSellers() {
+        for (User user : users) {
+            if(user instanceof Seller){
+        System.out.println("#" +" User ID: " + user.getuId() + " User Name: " + user.getuName() + " User Email: " + user.getuEmail() +
+                " User Password: " + user.getuPassword() + " User Active: " + user.getActive());
+        System.out.println("==================================================");
+        }
+            }
+            }
 
 
     public static User getUsers(int n) {
