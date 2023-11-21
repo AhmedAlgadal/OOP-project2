@@ -86,7 +86,16 @@ public class Admin extends User {
         // Implement code to activate a user
         UserCollections.displayInactiveUsers();
         System.out.println("Choose the User ID to activate it:");
-        int s= scanner.nextInt();
+        int s;
+        String g = scanner2.nextLine().trim();
+        // try and catch block to handle the String input .
+        try {
+             s = Integer.parseInt(g);
+        } catch (Exception e) {
+            System.out.println("You have to enter an integer number.");
+            return;
+        }
+        
         UserCollections.getUsers(s-1).setActive(true);
         System.out.println( UserCollections.getUsers(s-1).getuName()
         +" is now active");
