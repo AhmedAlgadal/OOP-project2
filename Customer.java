@@ -11,7 +11,7 @@ public class Customer extends User {
     private Scanner scanner2;
     private int selection;
 
-
+    private Invoice invoice ;
     public Customer() {
         boughtItem= new ArrayList<Item>();
         scanner = new Scanner(System.in);
@@ -69,7 +69,7 @@ public class Customer extends User {
                 System.out.println("case 4");
                     break;
                 case 5:
-                // ------------------
+                    invoice.generateInvoice();
                 System.out.println("case 5");
                     break;
                 case 6:
@@ -88,6 +88,8 @@ public class Customer extends User {
             scanner2.nextLine();
         } while (selection != 7);
     }
+
+
 
     public double getBalance() {
         return balance;

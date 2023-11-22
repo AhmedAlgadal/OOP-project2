@@ -74,4 +74,7 @@ public abstract class User {
         return count++;
     }
 
+    public boolean getName() {
+        return getName();
+    }
 }
