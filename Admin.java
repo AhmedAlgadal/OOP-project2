@@ -6,7 +6,7 @@ public class Admin extends User {
     Scanner scanner2 = new Scanner(System.in);
     int selection;
 
-    public Admin(String uId, String uName, String uEmail, String uPassword) {
+    public Admin(int uId, String uName, String uEmail, String uPassword) {
         super(uId, uName, uEmail, uPassword);
     }
 

@@ -16,7 +16,7 @@ public class Seller extends User {
         scanner2 = new Scanner(System.in);
     }
 
-    public Seller(String uId, String uName, String uEmail, String uPassword, boolean isActive) {
+    public Seller(int uId, String uName, String uEmail, String uPassword, boolean isActive) {
         super(uId, uName, uEmail, uPassword, isActive);
         products = new ArrayList<Item>();
         money=0;

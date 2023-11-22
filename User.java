@@ -1,35 +1,40 @@
 public abstract class User {
     // add address
-    String uId;
+    int uId;
     String uName;
     String uEmail;
     String uPassword;
     boolean isActive = false;
+    static int count=1;
 
     public User() {
+        // count++;
     }
 
-    public User(String uId, String uName, String uEmail, String uPassword, boolean isActive) {
+    public User(int uId, String uName, String uEmail, String uPassword, boolean isActive) {
         this.uId = uId;
         this.uName = uName;
         this.uEmail = uEmail;
         this.uPassword = uPassword;
         this.isActive = isActive;
+        // count++;
     }
 
-    public User(String uId, String uName, String uEmail, String uPassword) {
+    public User(int uId, String uName, String uEmail, String uPassword) {
         this.uId = uId;
         this.uName = uName;
         this.uEmail = uEmail;
         this.uPassword = uPassword;
+        // count++;
     }
 
-    public void setuId(String uId) {
-        this.uId = uId;
-    }
 
-    public String getuId() {
+    public int getuId() {
         return uId;
+    }
+
+    public void setuId(int uId) {
+        this.uId = uId;
     }
 
     public void setuName(String uName) {
@@ -64,4 +69,9 @@ public abstract class User {
         return isActive;
 
     }
+
+    public static int getCount() {
+        return count++;
+    }
+
 }

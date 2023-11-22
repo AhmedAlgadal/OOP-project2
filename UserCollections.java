@@ -7,7 +7,7 @@ public class UserCollections {
         users = new ArrayList<User>();
     }
 
-    public void storeUser(User user) {
+    public  void storeUser(User user) {
         users.add(user);
     }
 
@@ -33,6 +33,7 @@ public class UserCollections {
         System.out.println("==================================================");
             }
             }
+
     public static void displayAllCustomers() {
         for (User user : users) {
             if (user instanceof Customer){

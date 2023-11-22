@@ -18,7 +18,7 @@ public class Customer extends User {
         scanner2 = new Scanner(System.in);
     }
 
-    public Customer(String uId, String uName, String uEmail, String uPassword, boolean isActive, double balance) {
+    public Customer(int uId, String uName, String uEmail, String uPassword, boolean isActive, double balance) {
         super(uId, uName, uEmail, uPassword, isActive);
         this.balance= balance;
         boughtItem= new ArrayList<Item>();
