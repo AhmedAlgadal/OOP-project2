@@ -57,6 +57,10 @@ public class UserCollections {
     public static User getUsers(int n) {
         return users.get(n);
     }
+
+    public static ArrayList<User> getUser(){
+        return users;
+    }
 }
 
 

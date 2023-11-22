@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Admin extends User {
@@ -6,8 +8,13 @@ public class Admin extends User {
     Scanner scanner2 = new Scanner(System.in);
     int selection;
 
-    public Admin(int uId, String uName, String uEmail, String uPassword) {
+    public Admin() {
+        setActive(true);
+    }
+
+    public Admin(int uId, String uName, String uEmail, String uPassword, boolean isActive) {
         super(uId, uName, uEmail, uPassword);
+        isActive= true;
     }
 
     public void adminBoard() {
@@ -82,7 +89,7 @@ public class Admin extends User {
         } while (selection != 11);
     }
 
-    private  void activateUser() {
+    private void activateUser() {
         // Implement code to activate a user
         UserCollections.displayInactiveUsers();
         System.out.println("Choose the User ID to activate it:");
@@ -90,16 +97,16 @@ public class Admin extends User {
         String g = scanner2.nextLine().trim();
         // try and catch block to handle the String input .
         try {
-             s = Integer.parseInt(g);
+            s = Integer.parseInt(g);
         } catch (Exception e) {
             System.out.println("You have to enter an integer number.");
             return;
         }
-        
-        UserCollections.getUsers(s-1).setActive(true);
-        System.out.println( UserCollections.getUsers(s-1).getuName()
-        +" is now active");
-        System.out.println(UserCollections.getUsers(s-1).getActive());
+
+        UserCollections.getUsers(s - 1).setActive(true);
+        System.out.println(UserCollections.getUsers(s - 1).getuName()
+                + " is now active");
+        System.out.println(UserCollections.getUsers(s - 1).getActive());
 
     }
 
@@ -148,4 +155,32 @@ public class Admin extends User {
         // Implement code to display statistics
         System.out.println("\nImplement code to display statistics\n");
     }
-}
+
+    public Admin setAdminCredentials() {
+        Admin admin = new Admin();
+        try {
+            File file = new File("admin_credentials.txt"); // replace with your file path
+            Scanner sca = new Scanner(file);
+    
+            if (sca.hasNextLine()) {
+                admin.setuId(sca.nextInt());
+                sca.nextLine(); // consume newline left-over
+            }
+            if (sca.hasNextLine()) {
+                admin.setuName(sca.nextLine());
+            }
+            if (sca.hasNextLine()) {
+                admin.setuEmail(sca.nextLine());
+            }
+            if (sca.hasNextLine()) {
+                admin.setuPassword(sca.nextLine());
+            }
+    
+            sca.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return admin;
+    }
+    }
