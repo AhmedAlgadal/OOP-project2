@@ -1,15 +1,15 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class XYZShop {
     String name;
-    User customer;
-    User seller;
+    Customer customer;
+    Seller seller;
     Scanner scanner;
     Scanner scanner2;
     Scanner scanner3;
     String selection;
     UserCollections userColl;
+    Admin admin;
 
     public XYZShop() {
         customer = new Customer();
@@ -17,7 +17,10 @@ public class XYZShop {
         scanner = new Scanner(System.in);
         scanner2 = new Scanner(System.in);
         scanner3 = new Scanner(System.in);
-        userColl= new UserCollections();
+        userColl = new UserCollections();
+        admin = new Admin();
+        
+        userColl.storeUser(admin.setAdminCredentials());
     }
 
     public void shopBoard() {
@@ -34,7 +37,8 @@ public class XYZShop {
             switch (selection.trim()) {
                 case "1":
                     // --------------
-                    System.out.println("case 1");
+                      login();
+                    // admin.adminBoard();
                     break;
                 case "2":
                     System.out.println("Exiting Shop Interface...");
@@ -82,10 +86,11 @@ public class XYZShop {
     void Register(User u) {
         System.out.println("Enter your name:");
         String uName = scanner2.nextLine();
-        if (uName.trim().isEmpty()) {
+        if (uName.trim().isEmpty() ) {
             System.out.println("Your name must be not null");
             return;
         }
+        //------------------
         u.setuName(uName.trim());
         System.out.println("Enter your Email:");
         // we must check the email format before we set it and must not be empty
@@ -93,6 +98,12 @@ public class XYZShop {
         if (uMail.contains(" ") || !(uMail.contains("@") && uMail.contains("."))) {
             System.out.println(" You should provide a correct email address format. Example: name@email.com");
             return;
+        }
+        for (User user : UserCollections.getUser()) {
+            if (user.getuEmail().equals(uMail)) {
+                System.out.println("This email is already taken. Please choose a different one.");
+                return;
+            }
         }
         u.setuEmail(uMail);
 
@@ -108,8 +119,62 @@ public class XYZShop {
         u.setuId(User.getCount());
         System.out.println("Welcome " + u.getuName() + "! " + "Your username is: " + u.getuEmail()
                 + " your password is: " + u.getuPassword());
-        System.out.println("Your ID is: "+ u.getuId());
+        System.out.println("Your ID is: " + u.getuId());
 
         userColl.storeUser(u);
+    }
+
+    // public void login() {
+    // System.out.println("Enter your User name:");
+    // String name = scanner.nextLine();
+    // System.out.println("Enter your Password:");
+    // String password = scanner.nextLine();
+
+    // if (name.equals("admin") && password.equals("root")) {
+    // admin.adminBoard();
+    // return;
+    // }
+    // for (User user : UserCollections.users) {
+    // if (user.getuName().equals(name) && user.getuPassword().equals(password) &&
+    // user instanceof Customer && user.getActive()) {
+    // customer.CustomerBoard();
+    // } else if (user.getuName().equals(name) &&
+    // user.getuPassword().equals(password) && user instanceof Seller) {
+    // seller.sellerBoard();
+    // } else {
+    // System.out.println("Wrong Username or password");
+    // }
+    // }
+
+    // }
+    public void login() {
+        System.out.println("Enter your Email:");
+        String email = scanner.nextLine();
+        System.out.println("Enter your Password:");
+        String password = scanner.nextLine();
+
+        // if (email.equals("admin1@xyzshop.com") && password.equals("root")) {
+        //     admin.adminBoard();
+        //     return;
+        // }
+
+        boolean found = false;
+        for (User user : UserCollections.getUser()) {
+            if (user.getuEmail().equals(email) && user.getuPassword().equals(password)) {
+                found = true;
+                if (user instanceof Customer/* && user.getActive()*/) {
+                    customer.CustomerBoard();
+                } else if (user instanceof Seller) {
+                    seller.sellerBoard();
+                }else if (user instanceof Admin){
+                    admin.adminBoard();
+                }
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Wrong Email or password");
+        }
     }
 }
