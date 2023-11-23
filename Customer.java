@@ -9,7 +9,7 @@ public class Customer extends User {
     private ArrayList<Item> boughtItem;
     private Scanner scanner;
     private Scanner scanner2;
-    private int selection;
+    private String selection;
 
 
     public Customer() {
@@ -39,44 +39,34 @@ public class Customer extends User {
             System.out.println("7. Exit");
 
             System.out.print("Enter your selection: ");
-            // selection = scanner.nextInt();
-            boolean validInput = false;
-            while (!validInput) {
-                try {
-                    selection = scanner.nextInt();
-                    validInput = true;
-                } catch (InputMismatchException e) {
-                    System.out.println("Invalid input. Please enter a valid integer.");
-                    scanner.nextLine(); // Consume the remaining input line
-                }
-            }
-            switch (selection) {
-                case 1:
+            selection= scanner.nextLine();
+            switch (selection.trim()) {
+                case "1":
                 //--------------
                 System.out.println("case 1");
 
                     break;
-                case 2:
+                case "2":
                 // ------------------
                 System.out.println("case 2");
                     break;
-                case 3:
+                case "3":
                 // ------------------
                 System.out.println("case 3");
                     break;
-                case 4:
+                case "4":
                 // ------------------
                 System.out.println("case 4");
                     break;
-                case 5:
+                case "5":
                 // ------------------
                 System.out.println("case 5");
                     break;
-                case 6:
+                case "6":
                 // ------------------
                 System.out.println("case 6");
                     break;
-                case 7:
+                case "7":
                     System.out.println("Exiting Customer Interface...");
                     System.out.println("Exit successful. Good Bye.");
                     break;
@@ -86,7 +76,7 @@ public class Customer extends User {
             }
             System.out.println("press Enter...");
             scanner2.nextLine();
-        } while (selection != 7);
+        } while (!selection.equals("7"));
     }
 
     public double getBalance() {

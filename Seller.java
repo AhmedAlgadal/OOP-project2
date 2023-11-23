@@ -8,7 +8,7 @@ public class Seller extends User {
     private double money;
     private Scanner scanner;
     private Scanner scanner2;
-    private int selection;
+    private String selection;
 
     public Seller() {
         products = new ArrayList<Item>();
@@ -35,35 +35,25 @@ public class Seller extends User {
             System.out.println("5. Exit");
 
             System.out.print("Enter your selection: ");
-            // selection = scanner.nextInt();
-            boolean validInput = false;
-            while (!validInput) {
-                try {
-                    selection = scanner.nextInt();
-                    validInput = true;
-                } catch (InputMismatchException e) {
-                    System.out.println("Invalid input. Please enter a valid integer.");
-                    scanner.nextLine(); // Consume the remaining input line
-                }
-            }
-            switch (selection) {
-                case 1:
+            selection= scanner.nextLine();
+            switch (selection.trim()) {
+                case "1":
                 //--------------
                 System.out.println("case 1");
                     break;
-                case 2:
+                case "2":
                 // ------------------
                 System.out.println("case 2");
                     break;
-                case 3:
+                case "3":
                 // ------------------
                 System.out.println("case 3");
                     break;
-                case 4:
+                case "4":
                 // ------------------
                 System.out.println("case 4");
                     break;
-                case 5:
+                case "5":
                     System.out.println("Exiting Seller Interface...");
                     System.out.println("Exit successful. Good Bye.");
                     break;
@@ -73,7 +63,7 @@ public class Seller extends User {
             }
             System.out.println("press Enter...");
             scanner2.nextLine();
-        } while (selection != 5);
+        } while (!selection.equals("5"));
     }
 
     public void addProducts(Item item) {
