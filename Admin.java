@@ -6,7 +6,7 @@ public class Admin extends User {
 
     Scanner scanner = new Scanner(System.in);
     Scanner scanner2 = new Scanner(System.in);
-    int selection;
+    String selection;
 
     public Admin() {
         setActive(true);
@@ -34,49 +34,39 @@ public class Admin extends User {
             System.out.println("11. Exit");
 
             System.out.print("Enter your selection: ");
-            // selection = scanner.nextInt();
-            boolean validInput = false;
-            while (!validInput) {
-                try {
-                    selection = scanner.nextInt();
-                    validInput = true;
-                } catch (InputMismatchException e) {
-                    System.out.println("Invalid input. Please enter a valid integer.");
-                    scanner.nextLine(); // Consume the remaining input line
-                }
-            }
-            switch (selection) {
-                case 1:
+            selection = scanner.nextLine();
+            switch (selection.trim()) {
+                case "1":
                     activateUser();
                     break;
-                case 2:
+                case "2":
                     displayInactiveUsers();
                     break;
-                case 3:
+                case "3":
                     displayAllProducts();
                     break;
-                case 4:
+                case "4":
                     displayAllUsers();
                     break;
-                case 5:
+                case "5":
                     displayCustomers();
                     break;
-                case 6:
+                case "6":
                     displaySellers();
                     break;
-                case 7:
+                case "7":
                     approveProducts();
                     break;
-                case 8:
+                case "8":
                     removeUsers();
                     break;
-                case 9:
+                case "9":
                     removeProducts();
                     break;
-                case 10:
+                case "10":
                     displayStatistics();
                     break;
-                case 11:
+                case "11":
                     System.out.println("Exiting Admin Interface...");
                     System.out.println("Exit successful. Good Bye.");
                     break;
@@ -86,7 +76,7 @@ public class Admin extends User {
             }
             System.out.println("press Enter...");
             scanner2.nextLine();
-        } while (selection != 11);
+        } while (!selection.equals("11"));
     }
 
     private void activateUser() {
