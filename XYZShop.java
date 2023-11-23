@@ -41,8 +41,7 @@ public class XYZShop {
                     // admin.adminBoard();
                     break;
                 case "2":
-                    System.out.println("Exiting Shop Interface...");
-                    System.out.println("Exit successful. Good Bye.");
+                    logout();
                     break;
                 case "3":
                     // ------------------
@@ -177,4 +176,12 @@ public class XYZShop {
             System.out.println("Wrong Email or password");
         }
     }
+    public void logout() {
+
+                System.out.println("Logout successful. Thank you for your valuable contributions.");
+                System.exit(0);
+
+    }
+
+
 }

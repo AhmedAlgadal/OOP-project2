@@ -28,23 +28,23 @@ public class Main {
          * // seller.displayProducts();
          */
         XYZShop shop = new XYZShop();
-        // User seller = new Seller(001, "khaldss", "khald@ah.com", "111k", true);
-        // User seller1 = new Seller(002, "Maryss", "mr@ah.com", "112k", true);
-        // User seller2 = new Seller(003, "Aliss", "ali@ah.com", "113k", false);
-        // User seller3 = new Seller(004, "Lanass", "la@ah.com", "114k", false);
-        // User c1 = new Customer(001, "khaldcc", "khald@ah.com", "111k", true,1000);
-        // User c2 = new Customer(002, "Marycc", "mr@ah.com", "112k", true,544);
-        // User c3 = new Customer(003, "Alicc", "ali@ah.com", "113k", false,555);
-        // User c4 = new Customer(004, "Lanacc", "la@ah.com", "114k", false,566);
-        // UserCollections userColl = new UserCollections();
-        // userColl.storeUser(seller);
-        // userColl.storeUser(seller1);
-        // userColl.storeUser(seller2);
-        // userColl.storeUser(seller3);
-        // userColl.storeUser(c1);
-        // userColl.storeUser(c2);
-        // userColl.storeUser(c3);
-        // userColl.storeUser(c4);
+         User seller = new Seller(001, "khaldss", "khald@ah.com", "111k", true);
+         User seller1 = new Seller(002, "Maryss", "mr@ah.com", "112k", true);
+         User seller2 = new Seller(003, "Aliss", "ali@ah.com", "113k", false);
+         User seller3 = new Seller(004, "Lanass", "la@ah.com", "114k", false);
+         User c1 = new Customer(001, "khaldcc", "khald@ah.com", "111k", true,1000);
+         User c2 = new Customer(002, "Marycc", "mr@ah.com", "112k", true,544);
+         User c3 = new Customer(003, "Alicc", "ali@ah.com", "113k", false,555);
+         User c4 = new Customer(004, "Lanacc", "la@ah.com", "114k", false,566);
+         UserCollections userColl = new UserCollections();
+         userColl.storeUser(seller);
+         userColl.storeUser(seller1);
+         userColl.storeUser(seller2);
+         userColl.storeUser(seller3);
+         userColl.storeUser(c1);
+         userColl.storeUser(c2);
+         userColl.storeUser(c3);
+         userColl.storeUser(c4);
 
          Item i1= new Item("001", "book", 10, 3);
           Item i2= new Item("002", "phone", 500, 10);
@@ -55,12 +55,15 @@ public class Main {
         itemColl.storeItem(i3);
         
 
-        Admin admin = new Admin();
 
-        // shop.shopBoard();
-        admin.adminBoard();
-        // c1.CustomerBoard();
-        // seller.sellerBoard();
+
+        // Admin admin = new Admin(123, "Admin", "admin@xyz.com", "root");
+        Admin admin = new Admin();
+        shop.shopBoard();
+         admin.adminBoard();
+//         c1.CustomerBoard();
+//         seller.sellerBoard();
+
         
         // System.out.println(" Active Users");
         // admin.displayAllUsers();
@@ -80,6 +83,6 @@ public class Main {
 //       e.printStackTrace();
 //     }
 //   }
-
+        Invoice invoice = new Invoice(c1, seller,itemColl);
 }  
 }

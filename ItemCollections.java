@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class ItemCollections {
     private static ArrayList<Item> items;
@@ -23,5 +24,9 @@ public class ItemCollections {
 
     public static Item getUsers(int n) {
         return items.get(n);
+    }
+
+    public List<Item> getItems() {
+        return items;
     }
 }

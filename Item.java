@@ -53,4 +53,7 @@ public class Item {
     }
 
 
+    public String getName() {
+        return  itemName;
+    }
 }
