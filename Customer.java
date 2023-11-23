@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Customer extends User {
@@ -60,7 +59,7 @@ public class Customer extends User {
                     break;
 
               
-                case 5:
+                case "5":
                     invoice.generateInvoice();
 
                 System.out.println("case 5");
