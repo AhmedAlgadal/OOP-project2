@@ -1,6 +1,3 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -46,9 +43,9 @@ public class Main {
          userColl.storeUser(c3);
          userColl.storeUser(c4);
 
-         Item i1= new Item("001", "book", 10, 3);
-          Item i2= new Item("002", "phone", 500, 10);
-          Item i3= new Item("003", "pen", 1, 0);
+         Item i1= new Item(001, "book", 10, 3);
+          Item i2= new Item(002, "phone", 500, 10);
+          Item i3= new Item(003, "pen", 1, 0);
         ItemCollections itemColl = new ItemCollections();
         itemColl.storeItem(i1);
         itemColl.storeItem(i2);
@@ -58,11 +55,11 @@ public class Main {
 
 
         // Admin admin = new Admin(123, "Admin", "admin@xyz.com", "root");
-        Admin admin = new Admin();
+        // Admin admin = new Admin();
         shop.shopBoard();
-         admin.adminBoard();
+        //  admin.adminBoard();
 //         c1.CustomerBoard();
-//         seller.sellerBoard();
+        // seller.sellerBoard();
 
         
         // System.out.println(" Active Users");
@@ -83,6 +80,8 @@ public class Main {
 //       e.printStackTrace();
 //     }
 //   }
-        Invoice invoice = new Invoice(c1, seller,itemColl);
+        // Invoice invoice = new Invoice(c1, seller,itemColl);
+        
+        // System.out.println(invoice.generateInvoice());
 }  
 }

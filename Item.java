@@ -1,26 +1,28 @@
 public class Item {
 
-    private String itemNo;
+    private int itemNo;
     private String itemName;
     private double price;
     private int quantity;
     private int boughtTimes;
+    static int count=1;
+
 
     public Item() {
     }
 
-    public Item(String itemNo, String itemName, double price, int quantity) {
+    public Item(int itemNo, String itemName, double price, int quantity) {
         this.itemNo = itemNo;
         this.itemName = itemName;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public String getItemNo() {
+    public int getItemNo() {
         return itemNo;
     }
 
-    public void setItemNo(String itemNo) {
+    public void setItemNo(int itemNo) {
         this.itemNo = itemNo;
     }
 
@@ -56,4 +58,8 @@ public class Item {
     public String getName() {
         return  itemName;
     }
+    public static int getItemCount() {
+        return count++;
+    }
+
 }

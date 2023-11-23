@@ -39,8 +39,8 @@ public class Invoice {
         public  String generateInvoice() {
             StringBuilder invoice = new StringBuilder();
             invoice.append("Invoice:\n");
-            invoice.append("Seller: ").append(this.seller.getName()).append("\n");
-            invoice.append("Customer: ").append(this.customer.getName()).append("\n");
+            invoice.append("Seller: ").append(this.seller.getuName()).append("\n");
+            invoice.append("Customer: ").append(this.customer.getuName()).append("\n");
             invoice.append("Items:\n");
             List<Item> items = this.itemCollection.getItems();
             for (Item item : items) {

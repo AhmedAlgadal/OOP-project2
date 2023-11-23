@@ -39,14 +39,20 @@ public class Seller extends User {
                 case "1":
                 //--------------
                 System.out.println("case 1");
+                addProducts();
                     break;
                 case "2":
                 // ------------------
-                System.out.println("case 2");
+                // display all produst
+                displayProducts();
+                System.out.println("Enter the product Number:");
+                int itemNo = scanner2.nextInt();
+                removeItem(itemNo);
                     break;
                 case "3":
                 // ------------------
                 System.out.println("case 3");
+                displayProducts();
                     break;
                 case "4":
                 // ------------------
@@ -65,8 +71,17 @@ public class Seller extends User {
         } while (!selection.equals("5"));
     }
 
-    public void addProducts(Item item) {
+    public void addProducts() {
+        Item item = new Item();
+        System.out.println("Enter Item name");
+        item.setItemName(scanner2.nextLine());
+        System.out.println("Enter Item price");
+        item.setPrice(scanner2.nextDouble());
+        System.out.println("Enter Item quantity");
+        item.setQuantity(scanner2.nextInt());
+        item.setItemNo(Item.getItemCount());
         products.add(item);
+        System.out.println("add done");
 
     }
 //    public void addNewItem(Item item) {
@@ -74,25 +89,25 @@ public class Seller extends User {
 //        System.out.println("New item added successfully.");
 //    }
 
-//    public void removeItem(String itemNo) {
-//        boolean itemFound = false;
-//        int indexToRemove = -1;
-//
-//        for (int i = 0; i < products.size(); i++) {
-//            if (products.get(i).getItemNo().equals(itemNo)) {
-//                itemFound = true;
-//                indexToRemove = i;
-//                break;
-//            }
-//        }
-//
-//        if (itemFound) {
-//            products.remove(indexToRemove);
-//            System.out.println("Item removed successfully.");
-//        } else {
-//            System.out.println("Item not found.");
-//        }
-//    }
+   public void removeItem(int itemNo) {
+       boolean itemFound = false;
+       int indexToRemove = -1;
+
+       for (int i = 0; i < products.size(); i++) {
+           if (products.get(i).getItemNo()== itemNo) {
+               itemFound = true;
+               indexToRemove = i;
+               break;
+           }
+       }
+
+       if (itemFound) {
+           products.remove(indexToRemove);
+           System.out.println("Item removed successfully.");
+       } else {
+           System.out.println("Item not found.");
+       }
+   }
 //public void updateProducts(Item item, int quantityChange) {
 //    boolean itemFound = false;
 //    int indexToUpdate = -1;
@@ -135,10 +150,10 @@ public class Seller extends User {
         int index = 1;
         for (Item item : products) {
             if(item.getQuantity()==0){
-            System.out.println("#" + index + " "+item.getItemName() +" out of stock " + item.BoughtTimes()+ " times");
+            System.out.println("#" + index + " "+item.getItemName() +" out of stock ");
             }
             else{
-            System.out.println("#" + index + " "+item.getItemName()+" "+ item.BoughtTimes()+ " times");
+            System.out.println("#" + index + " "+item.getItemName());
             }
             index++;
         }

@@ -9,6 +9,7 @@ public class Customer extends User {
     private Scanner scanner;
     private Scanner scanner2;
     private String selection;
+    private ItemCollections boughtCollections;
 
     private Invoice invoice ;
     public Customer() {
@@ -95,6 +96,7 @@ public class Customer extends User {
         // -- update the balance and item qut and Seller money ++.
         this.boughtItem.add(item);
         item.BoughtTimes();
+        
         // seller.money++;
     }
 
