@@ -80,7 +80,64 @@ public class Seller extends User {
         products.add(item);
 
     }
+//    public void addNewItem(Item item) {
+//        products.add(item);
+//        System.out.println("New item added successfully.");
+//    }
 
+//    public void removeItem(String itemNo) {
+//        boolean itemFound = false;
+//        int indexToRemove = -1;
+//
+//        for (int i = 0; i < products.size(); i++) {
+//            if (products.get(i).getItemNo().equals(itemNo)) {
+//                itemFound = true;
+//                indexToRemove = i;
+//                break;
+//            }
+//        }
+//
+//        if (itemFound) {
+//            products.remove(indexToRemove);
+//            System.out.println("Item removed successfully.");
+//        } else {
+//            System.out.println("Item not found.");
+//        }
+//    }
+//public void updateProducts(Item item, int quantityChange) {
+//    boolean itemFound = false;
+//    int indexToUpdate = -1;
+//
+//    for (int i = 0; i < products.size(); i++) {
+//        if (products.get(i).getItemNo().equals(item.getItemNo())) {
+//            itemFound = true;
+//            indexToUpdate = i;
+//            break;
+//        }
+//    }
+//
+//    if (itemFound) {
+//        int newQuantity = products.get(indexToUpdate).getQuantity() + quantityChange;
+//
+//        if (newQuantity >= 0) {
+//            products.get(indexToUpdate).setQuantity(newQuantity);
+//            System.out.println("Item quantity updated successfully.");
+//        } else {
+//            System.out.println("Insufficient stock to update item quantity.");
+//        }
+//    } else {
+//        System.out.println("Item not found.");
+//    }
+//}
+//public double calculateTotalEarnings() {
+//    double totalEarnings = 0.00;
+//
+//    for (Item item : products) {
+//        totalEarnings += item.getPrice() * item.getBoughtTimes();
+//    }
+//
+//    return totalEarnings;
+//}
     public void removeProducts(Item item) {
         products.remove(item);
     }

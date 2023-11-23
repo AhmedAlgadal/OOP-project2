@@ -4,6 +4,7 @@ public abstract class User {
     String uName;
     String uEmail;
     String uPassword;
+    double uBalance;
     boolean isActive = false;
     static int count=1;
 
@@ -41,6 +42,9 @@ public abstract class User {
         this.uName = uName;
     }
 
+    public void setuBalance(double uBalance) {
+        this.uBalance = uBalance;
+    }
     public String getuName() {
         return uName;
     }
@@ -60,7 +64,9 @@ public abstract class User {
     public String getuPassword() {
         return uPassword;
     }
-
+    public double getuBalance() {
+        return uBalance;
+    }
     public void setActive(boolean isActive) {
         this.isActive = isActive;
     }
@@ -77,4 +83,6 @@ public abstract class User {
     public boolean getName() {
         return getName();
     }
+
+
 }

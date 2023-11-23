@@ -4,7 +4,7 @@ public class Invoice {
         private User customer;
         private User seller;
         private ItemCollections itemCollection;
-
+        // private boolean isPaid;
         public Invoice(User customer, User seller, ItemCollections itemCollection) {
 
             this.customer = customer;
@@ -20,6 +20,21 @@ public class Invoice {
             }
             return total;
         }
+        public void updateCustomerBalance(double amount) {
+        if (customer.getuBalance() >= amount) {
+            customer.setuBalance(customer.getuBalance() - amount);
+            System.out.println("Customer's balance updated successfully.");
+        } else {
+            System.out.println("Insufficient balance to update customer's balance.");
+        }
+    }
+        public boolean hasSufficientBalance(double amount) {
+            return customer.getuBalance() >= amount;
+        }
+//    public void markInvoiceAsPaid() {
+//        this.isPaid = true;
+//        System.out.println("Invoice paid successfully.");
+//    }
 
         public  String generateInvoice() {
             StringBuilder invoice = new StringBuilder();
