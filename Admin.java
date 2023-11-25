@@ -69,7 +69,7 @@ public class Admin extends User {
                 case "11":
                     System.out.println("Exiting Admin Interface...");
                     System.out.println("Exit successful. Good Bye.");
-                    break;
+                    return;
 
                 default:
                     System.out.println("Invalid selection. Please try again.");
@@ -93,10 +93,10 @@ public class Admin extends User {
             return;
         }
 
-        UserCollections.getUsers(s - 1).setActive(true);
-        System.out.println(UserCollections.getUsers(s - 1).getuName()
+        UserCollections.getUsers(s ).setActive(true);
+        System.out.println(UserCollections.getUsers(s).getuName()
                 + " is now active");
-        System.out.println(UserCollections.getUsers(s - 1).getActive());
+        System.out.println(UserCollections.getUsers(s).getActive());
 
     }
 
