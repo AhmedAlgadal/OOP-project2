@@ -5,8 +5,6 @@ public class XYZShop {
     Customer customer;
     Seller seller;
     Scanner scanner;
-    Scanner scanner2;
-    Scanner scanner3;
     String selection;
     UserCollections userColl;
     Admin admin;
@@ -15,11 +13,9 @@ public class XYZShop {
         customer = new Customer();
         seller = new Seller();
         scanner = new Scanner(System.in);
-        scanner2 = new Scanner(System.in);
-        scanner3 = new Scanner(System.in);
         userColl = new UserCollections();
         admin = new Admin();
-        
+
         userColl.storeUser(admin.setAdminCredentials());
     }
 
@@ -37,7 +33,7 @@ public class XYZShop {
             switch (selection.trim()) {
                 case "1":
                     // --------------
-                      login();
+                    login();
                     // admin.adminBoard();
                     break;
                 case "2":
@@ -52,7 +48,7 @@ public class XYZShop {
                     System.out.println("Invalid selection. Please try again.");
             }
             System.out.println("press Enter...");
-            scanner3.nextLine();
+            scanner.nextLine();
         } while (!selection.equals("2"));
     }
 
@@ -61,14 +57,14 @@ public class XYZShop {
         System.out.println("1.Customer  2.Seller");
         while (true) {
             try {
-                String option = scanner.next();
+                String option = scanner.nextLine();
                 int userType = Integer.parseInt(option);
                 if (userType == 1 || userType == 2) {
                     if (userType == 1) {
                         customer = new Customer();
                         Register(customer);
                     } else if (userType == 2) {
-                        seller= new Seller();
+                        seller = new Seller();
                         Register(seller);
                     }
                     break;
@@ -86,16 +82,16 @@ public class XYZShop {
 
     void Register(User u) {
         System.out.println("Enter your name:");
-        String uName = scanner2.nextLine();
-        if (uName.trim().isEmpty() ) {
+        String uName = scanner.nextLine();
+        if (uName.trim().isEmpty()) {
             System.out.println("Your name must be not null");
             return;
         }
-        //------------------
+        // ------------------
         u.setuName(uName.trim());
         System.out.println("Enter your Email:");
         // we must check the email format before we set it and must not be empty
-        String uMail = scanner2.nextLine();
+        String uMail = scanner.nextLine();
         if (uMail.contains(" ") || !(uMail.contains("@") && uMail.contains("."))) {
             System.out.println(" You should provide a correct email address format. Example: name@email.com");
             return;
@@ -110,10 +106,10 @@ public class XYZShop {
 
         System.out.println("Enter your PassWord:");
         // must check also the password, cannot be separated by space or be empty
-        String uPassword = scanner2.nextLine();
-        if (uPassword.trim().contains(" ")) {
+        String uPassword = scanner.nextLine();
+        if (uPassword.trim().contains(" ") || uPassword.trim().isEmpty()) {
             System.out.println(
-                    "You should provide a correct password format. Example: 'Password123'. Not: 'Password 123'.");
+                    "Your password must be not null,or you should provide a correct password format. Example: 'Password123'. Not: 'Password 123'.");
             return;
         }
         u.setuPassword(uPassword.trim());
@@ -155,19 +151,19 @@ public class XYZShop {
         String password = scanner.nextLine();
 
         // if (email.equals("admin1@xyzshop.com") && password.equals("root")) {
-        //     admin.adminBoard();
-        //     return;
+        // admin.adminBoard();
+        // return;
         // }
 
         boolean found = false;
         for (User user : UserCollections.getUser()) {
             if (user.getuEmail().equals(email) && user.getuPassword().equals(password)) {
                 found = true;
-                if (user instanceof Customer/* && user.getActive()*/) {
+                if (user instanceof Customer/* && user.getActive() */) {
                     customer.CustomerBoard();
                 } else if (user instanceof Seller) {
                     seller.sellerBoard();
-                }else if (user instanceof Admin){
+                } else if (user instanceof Admin) {
                     admin.adminBoard();
                 }
                 break;
@@ -178,12 +174,12 @@ public class XYZShop {
             System.out.println("Wrong Email or password");
         }
     }
+
     public void logout() {
 
-                System.out.println("Logout successful. Thank you for your valuable contributions.");
-                System.exit(0);
+        System.out.println("Logout successful. Thank you for your valuable contributions.");
+        System.exit(0);
 
     }
-
 
 }
