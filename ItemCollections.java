@@ -43,7 +43,7 @@ public class ItemCollections {
         return items;
     }
 
-    public static void removeItem(Item item){
-        items.remove(item);
+    public static void removeItem(int itemNo){
+        items.remove(items.get(itemNo));
     }
 }

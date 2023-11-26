@@ -64,7 +64,7 @@ public class Seller extends User {
                 case "5":
                     System.out.println("Exiting Seller Interface...");
                     System.out.println("Exit successful. Good Bye.");
-                    break;
+                    return;
 
                 default:
                     System.out.println("Invalid selection. Please try again.");

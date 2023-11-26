@@ -167,18 +167,34 @@ public class Admin extends User {
             return;
         }
         if (UserCollections.getUser().size() > s && s > 0) {
-        System.out.println(UserCollections.getUsers(s).getuName()
-                + " is now removed");
-        UserCollections.removeUser(s);
-        }else{
+            System.out.println(UserCollections.getUsers(s).getuName()
+                    + " is now removed");
+            UserCollections.removeUser(s);
+        } else {
             System.out.println("that User does not exist");
         }
     }
 
     public void removeProducts() {
         // Implement code to remove products
-        System.out.println("\nImplement code to remove products\n");
         ItemCollections.displayAllItems();
+        System.out.println("Choose the Item number to remove it:");
+        int s;
+        String g = scanner2.nextLine().trim();
+        // try and catch block to handle the String input .
+        try {
+            s = Integer.parseInt(g);
+        } catch (Exception e) {
+            System.out.println("You have to enter an integer number.");
+            return;
+        }
+
+        if (ItemCollections.getItems().size() >= s && s > 0) {
+            System.out.println(ItemCollections.getItems(s - 1).getItemName() + " is removed now.");
+            ItemCollections.removeItem(s - 1);
+        } else {
+            System.out.println("this product does not exist");
+        }
     }
 
     public void displayStatistics() {

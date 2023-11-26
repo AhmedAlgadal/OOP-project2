@@ -72,7 +72,7 @@ public class Customer extends User {
                 case "7":
                     System.out.println("Exiting Customer Interface...");
                     System.out.println("Exit successful. Good Bye.");
-                    break;
+                    return;
 
                 default:
                     System.out.println("Invalid selection. Please try again.");
