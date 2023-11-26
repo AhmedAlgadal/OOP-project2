@@ -5,7 +5,6 @@ import java.util.*;
 public class Admin extends User {
 
     Scanner scanner = new Scanner(System.in);
-    Scanner scanner2 = new Scanner(System.in);
     String selection;
 
     public Admin() {
@@ -75,7 +74,7 @@ public class Admin extends User {
                     System.out.println("Invalid selection. Please try again.");
             }
             System.out.println("press Enter...");
-            scanner2.nextLine();
+            scanner.nextLine();
         } while (!selection.equals("11"));
     }
 
@@ -84,7 +83,7 @@ public class Admin extends User {
         UserCollections.displayAllUsers();
         System.out.println("Choose the User number to activate it:");
         int s;
-        String g = scanner2.nextLine().trim();
+        String g = scanner.nextLine().trim();
         // try and catch block to handle the String input .
         try {
             s = Integer.parseInt(g);
@@ -134,7 +133,7 @@ public class Admin extends User {
         ItemCollections.displayAllItems();
         System.out.println("Choose the Item number to approve it:");
         int s;
-        String g = scanner2.nextLine().trim();
+        String g = scanner.nextLine().trim();
         // try and catch block to handle the String input .
         try {
             s = Integer.parseInt(g);
@@ -158,7 +157,7 @@ public class Admin extends User {
         UserCollections.displayAllUsers();
         System.out.println("Choose the User ID to remove it:");
         int s;
-        String g = scanner2.nextLine().trim();
+        String g = scanner.nextLine().trim();
         // try and catch block to handle the String input .
         try {
             s = Integer.parseInt(g);
@@ -180,7 +179,7 @@ public class Admin extends User {
         ItemCollections.displayAllItems();
         System.out.println("Choose the Item number to remove it:");
         int s;
-        String g = scanner2.nextLine().trim();
+        String g = scanner.nextLine().trim();
         // try and catch block to handle the String input .
         try {
             s = Integer.parseInt(g);

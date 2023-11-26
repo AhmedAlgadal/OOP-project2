@@ -7,13 +7,11 @@ public class Seller extends User {
     private ItemCollections itemColl;
     private double money;
     private Scanner scanner;
-    private Scanner scanner2;
     private String selection;
 
     public Seller() {
         products = new ArrayList<Item>();
         scanner = new Scanner(System.in);
-        scanner2 = new Scanner(System.in);
         itemColl = new ItemCollections();
     }
 
@@ -22,7 +20,6 @@ public class Seller extends User {
         products = new ArrayList<Item>();
         money=0;
         scanner = new Scanner(System.in);
-        scanner2 = new Scanner(System.in);
         itemColl = new ItemCollections();
     }
 
@@ -49,7 +46,8 @@ public class Seller extends User {
                 // display all produst
                 displayProducts();
                 System.out.println("Enter the product Number:");
-                int itemNo = scanner2.nextInt();
+                int itemNo = scanner.nextInt();
+                scanner.nextLine();
                 removeItem(itemNo);
                     break;
                 case "3":
@@ -70,22 +68,23 @@ public class Seller extends User {
                     System.out.println("Invalid selection. Please try again.");
             }
             System.out.println("press Enter...");
-            scanner2.nextLine();
+            scanner.nextLine();
         } while (!selection.equals("5"));
     }
 
     public void addProducts() {
         Item item = new Item();
         System.out.println("Enter Item name");
-        item.setItemName(scanner2.nextLine());
+        item.setItemName(scanner.nextLine());
         System.out.println("Enter Item price");
-        item.setPrice(scanner2.nextDouble());
+        item.setPrice(scanner.nextDouble());
         System.out.println("Enter Item quantity");
-        item.setQuantity(scanner2.nextInt());
+        item.setQuantity(scanner.nextInt());
         item.setItemNo(Item.getItemCount());
         products.add(item);
         itemColl.storeItem(item);
         System.out.println("add done");
+        scanner.nextLine();
 
     }
 //    public void addNewItem(Item item) {

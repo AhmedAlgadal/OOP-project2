@@ -7,7 +7,6 @@ public class Customer extends User {
     private double balance;
     private ArrayList<Item> boughtItem;
     private Scanner scanner;
-    private Scanner scanner2;
     private String selection;
     private ItemCollections boughtCollections;
 
@@ -15,7 +14,6 @@ public class Customer extends User {
     public Customer() {
         boughtItem= new ArrayList<Item>();
         scanner = new Scanner(System.in);
-        scanner2 = new Scanner(System.in);
     }
 
     public Customer(int uId, String uName, String uEmail, String uPassword, boolean isActive, double balance) {
@@ -23,7 +21,6 @@ public class Customer extends User {
         this.balance= balance;
         boughtItem= new ArrayList<Item>();
         scanner = new Scanner(System.in);
-        scanner2 = new Scanner(System.in);
     }
 
     public void CustomerBoard() {
@@ -78,7 +75,7 @@ public class Customer extends User {
                     System.out.println("Invalid selection. Please try again.");
             }
             System.out.println("press Enter...");
-            scanner2.nextLine();
+            scanner.nextLine();
         } while (!selection.equals("7"));
     }
 
