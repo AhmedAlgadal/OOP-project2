@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Seller extends User {
 
     private ArrayList<Item> products;
+    private ItemCollections itemColl;
     private double money;
     private Scanner scanner;
     private Scanner scanner2;
@@ -13,6 +14,7 @@ public class Seller extends User {
         products = new ArrayList<Item>();
         scanner = new Scanner(System.in);
         scanner2 = new Scanner(System.in);
+        itemColl = new ItemCollections();
     }
 
     public Seller(int uId, String uName, String uEmail, String uPassword, boolean isActive) {
@@ -21,6 +23,7 @@ public class Seller extends User {
         money=0;
         scanner = new Scanner(System.in);
         scanner2 = new Scanner(System.in);
+        itemColl = new ItemCollections();
     }
 
     public void sellerBoard() {
@@ -81,6 +84,7 @@ public class Seller extends User {
         item.setQuantity(scanner2.nextInt());
         item.setItemNo(Item.getItemCount());
         products.add(item);
+        itemColl.storeItem(item);
         System.out.println("add done");
 
     }
@@ -171,6 +175,14 @@ public class Seller extends User {
             }
             index++;
         }
+    }
+
+    public ArrayList<Item> getProducts() {
+        return products;
+    }
+
+    public void setProducts(ArrayList<Item> products) {
+        this.products = products;
     }
 
 }

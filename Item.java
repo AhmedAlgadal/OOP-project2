@@ -6,6 +6,7 @@ public class Item {
     private int quantity;
     private int boughtTimes;
     static int count=1;
+    boolean isApprove;
 
 
     public Item() {
@@ -60,6 +61,14 @@ public class Item {
     }
     public static int getItemCount() {
         return count++;
+    }
+
+    public void setApprove(boolean isApprove) {
+        this.isApprove = isApprove;
+    }
+
+    public boolean getApprove(){
+        return isApprove;
     }
 
 }

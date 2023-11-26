@@ -65,8 +65,10 @@ public class XYZShop {
                 int userType = Integer.parseInt(option);
                 if (userType == 1 || userType == 2) {
                     if (userType == 1) {
+                        customer = new Customer();
                         Register(customer);
                     } else if (userType == 2) {
+                        seller= new Seller();
                         Register(seller);
                     }
                     break;

@@ -6,6 +6,8 @@ public class Main {
         shop.shopBoard();
         // Admin admin = new Admin();
         // admin.adminBoard();
+        // Seller s = new Seller();
+        // s.sellerBoard();
 
         }
 }

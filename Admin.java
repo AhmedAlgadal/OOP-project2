@@ -14,7 +14,7 @@ public class Admin extends User {
 
     public Admin(int uId, String uName, String uEmail, String uPassword, boolean isActive) {
         super(uId, uName, uEmail, uPassword);
-        isActive= true;
+        isActive = true;
     }
 
     public void adminBoard() {
@@ -81,8 +81,8 @@ public class Admin extends User {
 
     private void activateUser() {
         // Implement code to activate a user
-        UserCollections.displayInactiveUsers();
-        System.out.println("Choose the User ID to activate it:");
+        UserCollections.displayAllUsers();
+        System.out.println("Choose the User number to activate it:");
         int s;
         String g = scanner2.nextLine().trim();
         // try and catch block to handle the String input .
@@ -92,12 +92,15 @@ public class Admin extends User {
             System.out.println("You have to enter an integer number.");
             return;
         }
+        if (UserCollections.getUser().size() > s && s > 0) {
 
-        UserCollections.getUsers(s ).setActive(true);
-        System.out.println(UserCollections.getUsers(s).getuName()
-                + " is now active");
-        System.out.println(UserCollections.getUsers(s).getActive());
-
+            UserCollections.getUsers(s).setActive(true);
+            System.out.println(UserCollections.getUsers(s).getuName()
+                    + " is now active");
+            System.out.println(UserCollections.getUsers(s).getActive());
+        } else {
+            System.out.println("that User does not exist");
+        }
     }
 
     public void displayInactiveUsers() {
@@ -128,17 +131,54 @@ public class Admin extends User {
 
     public void approveProducts() {
         // Implement code to approve products
-        System.out.println("\nImplement code to approve products\n");
+        ItemCollections.displayAllItems();
+        System.out.println("Choose the Item number to approve it:");
+        int s;
+        String g = scanner2.nextLine().trim();
+        // try and catch block to handle the String input .
+        try {
+            s = Integer.parseInt(g);
+        } catch (Exception e) {
+            System.out.println("You have to enter an integer number.");
+            return;
+        }
+
+        if (ItemCollections.getItems().size() >= s && s > 0) {
+
+            ItemCollections.getItems(s - 1).setApprove(true);
+            System.out.println(ItemCollections.getItems(s - 1).getItemName() + " is now approved");
+            System.out.println(ItemCollections.getItems(s - 1).getApprove());
+        } else {
+            System.out.println("this product does not exist");
+        }
     }
 
     public void removeUsers() {
         // Implement code to remove users
-        System.out.println("\nImplement code to remove users\n");
+        UserCollections.displayAllUsers();
+        System.out.println("Choose the User ID to remove it:");
+        int s;
+        String g = scanner2.nextLine().trim();
+        // try and catch block to handle the String input .
+        try {
+            s = Integer.parseInt(g);
+        } catch (Exception e) {
+            System.out.println("You have to enter an integer number.");
+            return;
+        }
+        if (UserCollections.getUser().size() > s && s > 0) {
+        System.out.println(UserCollections.getUsers(s).getuName()
+                + " is now removed");
+        UserCollections.removeUser(s);
+        }else{
+            System.out.println("that User does not exist");
+        }
     }
 
     public void removeProducts() {
         // Implement code to remove products
         System.out.println("\nImplement code to remove products\n");
+        ItemCollections.displayAllItems();
     }
 
     public void displayStatistics() {
@@ -151,7 +191,7 @@ public class Admin extends User {
         try {
             File file = new File("admin_credentials.txt"); // replace with your file path
             Scanner sca = new Scanner(file);
-    
+
             if (sca.hasNextLine()) {
                 admin.setuId(sca.nextInt());
                 sca.nextLine(); // consume newline left-over
@@ -165,7 +205,7 @@ public class Admin extends User {
             if (sca.hasNextLine()) {
                 admin.setuPassword(sca.nextLine());
             }
-    
+
             sca.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
@@ -173,4 +213,4 @@ public class Admin extends User {
         }
         return admin;
     }
-    }
+}
