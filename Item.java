@@ -12,11 +12,12 @@ public class Item {
     public Item() {
     }
 
-    public Item(int itemNo, String itemName, double price, int quantity) {
+    public Item(int itemNo, String itemName, double price, int quantity,boolean isApprove) {
         this.itemNo = itemNo;
         this.itemName = itemName;
         this.price = price;
         this.quantity = quantity;
+        this.isApprove = isApprove;
     }
 
     public int getItemNo() {

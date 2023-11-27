@@ -147,6 +147,7 @@ public class Admin extends User {
             ItemCollections.getItems(s - 1).setApprove(true);
             System.out.println(ItemCollections.getItems(s - 1).getItemName() + " is now approved");
             System.out.println(ItemCollections.getItems(s - 1).getApprove());
+            ItemCollections.addApprovedItem(ItemCollections.getItems(s - 1));
         } else {
             System.out.println("this product does not exist");
         }
