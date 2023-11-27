@@ -23,7 +23,7 @@ public class Customer extends User {
         scanner = new Scanner(System.in);
     }
 
-    public void CustomerBoard() {
+    public void showCustomerBoard() {
         do {
             System.out.println("Customer Interface");
             System.out.println("=================");

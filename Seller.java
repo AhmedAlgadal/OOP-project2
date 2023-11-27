@@ -3,27 +3,24 @@ import java.util.Scanner;
 
 public class Seller extends User {
 
-    private ArrayList<Item> products;
     private ItemCollections itemColl;
     private double money;
     private Scanner scanner;
     private String selection;
 
     public Seller() {
-        products = new ArrayList<Item>();
         scanner = new Scanner(System.in);
         itemColl = new ItemCollections();
     }
 
     public Seller(int uId, String uName, String uEmail, String uPassword, boolean isActive) {
         super(uId, uName, uEmail, uPassword, isActive);
-        products = new ArrayList<Item>();
         money=0;
         scanner = new Scanner(System.in);
         itemColl = new ItemCollections();
     }
 
-    public void sellerBoard() {
+    public void showSellerBoard() {
         do {
             System.out.println("Seller Interface");
             System.out.println("=================");
@@ -38,22 +35,19 @@ public class Seller extends User {
             switch (selection.trim()) {
                 case "1":
                 //--------------
-                System.out.println("case 1");
+                System.out.println();
                 addProducts();
                     break;
                 case "2":
                 // ------------------
                 // display all produst
-                displayProducts();
-                System.out.println("Enter the product Number:");
-                int itemNo = scanner.nextInt();
-                scanner.nextLine();
-                removeItem(itemNo);
+                System.out.println();
+                removeItem();
                     break;
                 case "3":
                 // ------------------
-                System.out.println("case 3");
-                displayProducts();
+                System.out.println();
+                ItemCollections.displayAllItems();
                     break;
                 case "4":
                 // ------------------
@@ -74,16 +68,33 @@ public class Seller extends User {
 
     public void addProducts() {
         Item item = new Item();
-        System.out.println("Enter Item name");
+        System.out.println("Enter Item name:");
         item.setItemName(scanner.nextLine());
-        System.out.println("Enter Item price");
-        item.setPrice(scanner.nextDouble());
-        System.out.println("Enter Item quantity");
-        item.setQuantity(scanner.nextInt());
+        System.out.println("Enter Item price:");
+        double s;
+        String g = scanner.nextLine().trim();
+        // try and catch block to handle the String input .
+        try {
+            s = Double.parseDouble(g);
+        } catch (Exception e) {
+            System.out.println("You have to enter a number.");
+            return;
+        }
+        item.setPrice(s);
+        System.out.println("Enter Item quantity:");
+        int s2;
+        String g2 = scanner.nextLine().trim();
+        // try and catch block to handle the String input .
+        try {
+            s2 = Integer.parseInt(g2);
+        } catch (Exception e) {
+            System.out.println("You have to enter an integer number.");
+            return;
+        }
+        item.setQuantity(s2);
         item.setItemNo(Item.getItemCount());
-        products.add(item);
         itemColl.storeItem(item);
-        System.out.println("add done");
+        System.out.println("add done.");
         scanner.nextLine();
 
     }
@@ -92,25 +103,26 @@ public class Seller extends User {
 //        System.out.println("New item added successfully.");
 //    }
 
-   public void removeItem(int itemNo) {
-       boolean itemFound = false;
-       int indexToRemove = -1;
+   public void removeItem() {
+    ItemCollections.displayAllItems();
+    System.out.println("Choose the Item number to remove it:");
+    int s;
+    String g = scanner.nextLine().trim();
+    // try and catch block to handle the String input .
+    try {
+        s = Integer.parseInt(g);
+    } catch (Exception e) {
+        System.out.println("You have to enter an integer number.");
+        return;
+    }
 
-       for (int i = 0; i < products.size(); i++) {
-           if (products.get(i).getItemNo()== itemNo) {
-               itemFound = true;
-               indexToRemove = i;
-               break;
-           }
-       }
-
-       if (itemFound) {
-           products.remove(indexToRemove);
-           System.out.println("Item removed successfully.");
-       } else {
-           System.out.println("Item not found.");
-       }
-   }
+    if (ItemCollections.getItems().size() >= s && s > 0) {
+        System.out.println(ItemCollections.getItems(s - 1).getItemName() + " is removed now.");
+        ItemCollections.removeItem(s - 1);
+    } else {
+        System.out.println("this product does not exist");
+    }
+}
 //public void updateProducts(Item item, int quantityChange) {
 //    boolean itemFound = false;
 //    int indexToUpdate = -1;
@@ -145,13 +157,10 @@ public class Seller extends User {
 //
 //    return totalEarnings;
 //}
-    public void removeProducts(Item item) {
-        products.remove(item);
-    }
 
     public void displayProducts() {
         int index = 1;
-        for (Item item : products) {
+        for (Item item : ItemCollections.getItems()) {
             if(item.getQuantity()==0){
             System.out.println("#" + index + " "+item.getItemName() +" out of stock ");
             }
@@ -164,7 +173,7 @@ public class Seller extends User {
 
         public void getStatistics() {
         int index = 1;
-        for (Item item : products) {
+        for (Item item : ItemCollections.getItems()) {
             if(item.getQuantity()==0){
             System.out.println("#" + index + " "+item.getItemName() +" out of stock" + " bought "+ item.BoughtTimes()+ " times");
             }
@@ -176,12 +185,6 @@ public class Seller extends User {
         }
     }
 
-    public ArrayList<Item> getProducts() {
-        return products;
-    }
 
-    public void setProducts(ArrayList<Item> products) {
-        this.products = products;
-    }
 
 }

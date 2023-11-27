@@ -16,7 +16,7 @@ public class Admin extends User {
         isActive = true;
     }
 
-    public void adminBoard() {
+    public void showAdminBoard() {
         do {
             System.out.println("Admin Interface");
             System.out.println("=================");
