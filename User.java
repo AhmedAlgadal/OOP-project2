@@ -42,9 +42,6 @@ public abstract class User {
         this.uName = uName;
     }
 
-    public void setuBalance(double uBalance) {
-        this.uBalance = uBalance;
-    }
     public String getuName() {
         return uName;
     }
@@ -64,9 +61,6 @@ public abstract class User {
     public String getuPassword() {
         return uPassword;
     }
-    public double getuBalance() {
-        return uBalance;
-    }
     public void setActive(boolean isActive) {
         this.isActive = isActive;
     }
@@ -80,6 +74,12 @@ public abstract class User {
         return count++;
     }
 
+    public double getuBalance() {
+        return uBalance;
+    }
 
+    public void setuBalance(double uBalance) {
+        this.uBalance = uBalance;
+    }
 
 }

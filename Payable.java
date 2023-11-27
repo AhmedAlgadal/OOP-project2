@@ -1,3 +1,4 @@
 interface Payable {
     
+    void pay();
 }

@@ -19,7 +19,7 @@ public class XYZShop {
         userColl.storeUser(admin.setAdminCredentials());
     }
 
-    public void shopBoard() {
+    public void showShopBoard() {
         do {
             System.out.println("XYZ Shop Interface");
             System.out.println("=================");
@@ -160,11 +160,11 @@ public class XYZShop {
             if (user.getuEmail().equals(email) && user.getuPassword().equals(password)) {
                 found = true;
                 if (user instanceof Customer/* && user.getActive() */) {
-                    customer.CustomerBoard();
+                    customer.showCustomerBoard();
                 } else if (user instanceof Seller) {
-                    seller.sellerBoard();
+                    seller.showSellerBoard();
                 } else if (user instanceof Admin) {
-                    admin.adminBoard();
+                    admin.showAdminBoard();
                 }
                 break;
             }

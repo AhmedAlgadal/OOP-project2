@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class ItemCollections {
     private static ArrayList<Item> items;
@@ -16,24 +15,24 @@ public class ItemCollections {
         int index=1 ;
         for (Item item: items) {
 
-            System.out.println("#" + " Item number: " + index + " Item Name: " + item.getItemName() + " Item price: "
+            System.out.println("#" + index + " Item Name: " + item.getItemName() + " Item price: "
                     + item.getPrice() +
-                    " Item quantity: " + item.getQuantity()+ "Item Approve "+ item.getApprove() );
+                    " Item quantity: " + item.getQuantity()+ " Item Approve: "+ item.getApprove() );
             System.out.println("==================================================");
             index++;
         }
     }
 
-    public static void displayUnapproveItems() {
-        for (Item item: items) {
-            if(!item.getApprove()){
-            System.out.println("#" + " Item number: " + item.getItemNo() + " Item Name: " + item.getItemName() + " Item price: "
-                    + item.getPrice() +
-                    " Item quantity: " + item.getQuantity()+ "Item Approve "+ item.getApprove() );
-            System.out.println("==================================================");
-            }
-        }
-    }
+    // public static void displayUnapproveItems() {
+    //     for (Item item: items) {
+    //         if(!item.getApprove()){
+    //         System.out.println("#" + " Item number: " + item.getItemNo() + " Item Name: " + item.getItemName() + " Item price: "
+    //                 + item.getPrice() +
+    //                 " Item quantity: " + item.getQuantity()+ "Item Approve "+ item.getApprove() );
+    //         System.out.println("==================================================");
+    //         }
+    //     }
+    // }
 
     public static Item getItems(int n) {
         return items.get(n);
