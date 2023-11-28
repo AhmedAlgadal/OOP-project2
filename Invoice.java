@@ -1,5 +1,5 @@
 import java.util.*;
-public class Invoice {
+public class Invoice  implements Payable{
 
         private User customer;
         private User seller;
@@ -48,6 +48,10 @@ public class Invoice {
             }
             invoice.append("Total: ").append(this.calculateTotal());
             return invoice.toString();
+        }
+
+        public double getPay(){
+            return calculateTotal();
         }
     }
 

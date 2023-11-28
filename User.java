@@ -12,12 +12,13 @@ public abstract class User {
         // count++;
     }
 
-    public User(int uId, String uName, String uEmail, String uPassword, boolean isActive) {
+    public User(int uId, String uName, String uEmail, String uPassword, boolean isActive, double uBalance) {
         this.uId = uId;
         this.uName = uName;
         this.uEmail = uEmail;
         this.uPassword = uPassword;
         this.isActive = isActive;
+        this.uBalance = uBalance;
         // count++;
     }
 

@@ -13,9 +13,8 @@ public class Seller extends User {
         itemColl = new ItemCollections();
     }
 
-    public Seller(int uId, String uName, String uEmail, String uPassword, boolean isActive) {
-        super(uId, uName, uEmail, uPassword, isActive);
-        money=0;
+    public Seller(int uId, String uName, String uEmail, String uPassword, boolean isActive, double money) {
+        super(uId, uName, uEmail, uPassword, isActive, money);
         scanner = new Scanner(System.in);
         itemColl = new ItemCollections();
     }
