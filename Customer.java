@@ -8,13 +8,13 @@ public class Customer extends User {
     private ArrayList<Item> boughtItem;
     private Scanner scanner;
     private String selection;
-    private ItemCollections itemColl;
+    // private ItemCollections itemColl;
     private Invoice invoice;
 
     public Customer() {
         boughtItem = new ArrayList<Item>();
         scanner = new Scanner(System.in);
-        itemColl= new ItemCollections();
+        // itemColl= new ItemCollections();
     }
 
     public Customer(int uId, String uName, String uEmail, String uPassword, boolean isActive, double balance) {
@@ -22,7 +22,7 @@ public class Customer extends User {
         // this.balance= balance;
         boughtItem = new ArrayList<Item>();
         scanner = new Scanner(System.in);
-        itemColl= new ItemCollections();
+        // itemColl= new ItemCollections();
     }
 
     public void showCustomerBoard() {
@@ -66,7 +66,7 @@ public class Customer extends User {
                     break;
                 case "6":
                     // ------------------
-                    System.out.println("case 6");
+                    rateSeller();
                     break;
                 case "7":
                     System.out.println("Exiting Customer Interface...");
@@ -243,6 +243,39 @@ public class Customer extends User {
         }
 
     }
+
+    public void rateSeller(){
+        displayOrders();
+        System.out.println("choose Item to Rate it's Seller:");
+        int order;
+        String o = scanner.nextLine().trim();
+        // try and catch block to handle the String input .
+        try {
+            order = Integer.parseInt(o);
+        } catch (Exception e) {
+            System.out.println("You have to enter an integer number.");
+            return;
+        }
+
+        System.out.println("Rate your Seller from 1 to 5");
+        double rate;
+        String r = scanner.nextLine().trim();
+        // try and catch block to handle the String input .
+        try {
+            rate = Double.parseDouble(r);
+        } catch (Exception e) {
+            System.out.println("You have to enter an integer number.");
+            return;
+        }
+
+        if (getBoughtItem().size() >= order && order > 0) {
+
+            getBoughtItem(order-1).getSeller().setRate(rate);
+            System.out.println("You Rate your Seller "+ getBoughtItem(order-1).getSeller().getuName()+ " : "+ getBoughtItem(order-1).getSeller().getRate());
+        } else {
+            System.out.println("this product does not exist");
+        }
+        }
 
     public void addBoughtItem(Item boughtItem) {
         this.boughtItem.add(boughtItem);

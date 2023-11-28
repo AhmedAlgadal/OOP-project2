@@ -9,11 +9,13 @@ public class Main {
         // Seller s = new Seller();
         // s.sellerBoard();
 
-        Item i1 = new Item(1, "aaa", 10, 2, true);
-        Item i2 = new Item(2, "bbb", 20, 2, false);
-        Item i3 = new Item(3, "ccc", 30, 3, true);
-        Item i4 = new Item(4, "ddd", 40, 4, false);
-        Item i5 = new Item(5, "eee", 50, 0, true);
+        Seller ss1 = new Seller(11, "ss1", "ss1@.", "111", true, 0);
+        Seller ss2 = new Seller(22, "ss2", "ss2@.", "222", true, 0);
+        Item i1 = new Item(1, "aaa", 10, 2, true, ss1);
+        Item i2 = new Item(2, "bbb", 20, 2, false,ss1);
+        Item i3 = new Item(3, "ccc", 30, 3, true,ss2);
+        Item i4 = new Item(4, "ddd", 40, 4, false,ss2);
+        Item i5 = new Item(5, "eee", 50, 0, true,ss1);
 
         ItemCollections itemColl = new ItemCollections();
         itemColl.storeItem(i1);

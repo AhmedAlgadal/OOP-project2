@@ -7,6 +7,7 @@ public class Seller extends User {
     private double money;
     private Scanner scanner;
     private String selection;
+    private double rate;
 
     public Seller() {
         scanner = new Scanner(System.in);
@@ -93,6 +94,8 @@ public class Seller extends User {
         item.setQuantity(s2);
         item.setItemNo(Item.getItemCount());
         itemColl.storeItem(item);
+        // will set this Seller as the seller of the item.
+        item.setSeller(this);
         System.out.println("add done.");
         scanner.nextLine();
 
@@ -182,6 +185,16 @@ public class Seller extends User {
             }
             index++;
         }
+    }
+
+
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(double rate) {
+        // avg of the rates
+        this.rate = rate;
     }
 
 

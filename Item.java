@@ -7,17 +7,19 @@ public class Item {
     private int boughtTimes;
     static int count=1;
     boolean isApprove;
+    private Seller seller;
 
 
     public Item() {
     }
 
-    public Item(int itemNo, String itemName, double price, int quantity,boolean isApprove) {
+    public Item(int itemNo, String itemName, double price, int quantity,boolean isApprove, Seller seller) {
         this.itemNo = itemNo;
         this.itemName = itemName;
         this.price = price;
         this.quantity = quantity;
         this.isApprove = isApprove;
+        this.seller = seller;
     }
 
     public int getItemNo() {
@@ -72,4 +74,11 @@ public class Item {
         return isApprove;
     }
 
+    public Seller getSeller() {
+        return this.seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
+    }
 }
