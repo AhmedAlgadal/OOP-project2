@@ -2,12 +2,12 @@
 public class Main {
   public static void main(String[] args) {
 
-        // XYZShop shop = new XYZShop();
-        // shop.showShopBoard();
-        // Admin admin = new Admin();
-        // admin.adminBoard();
-        // Seller s = new Seller();
-        // s.sellerBoard();
+//         XYZShop shop = new XYZShop();
+//         shop.showShopBoard();
+//         Admin admin = new Admin();
+//         admin.showAdminBoard();
+//         Seller s = new Seller();
+//         s.sellerBoard();
 
         Seller ss1 = new Seller(11, "ss1", "ss1@.", "111", true, 0);
         Seller ss2 = new Seller(22, "ss2", "ss2@.", "222", true, 0);

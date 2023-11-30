@@ -8,11 +8,13 @@ public class Customer extends User {
     private ArrayList<Item> boughtItem;
     private Scanner scanner;
     private String selection;
-    // private ItemCollections itemColl;
+    private ItemCollections itemColl;
     private Invoice invoice;
 
     public Customer() {
+        invoice = new Invoice();
         boughtItem = new ArrayList<Item>();
+        itemColl = new ItemCollections();
         scanner = new Scanner(System.in);
         // itemColl= new ItemCollections();
     }
@@ -60,7 +62,7 @@ public class Customer extends User {
                     break;
 
                 case "5":
-                    invoice.generateInvoice();
+//
 
                     System.out.println("case 5");
                     break;
