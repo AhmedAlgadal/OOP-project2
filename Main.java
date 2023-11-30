@@ -30,6 +30,7 @@ public class Main {
         c.showCustomerBoard();
         // ItemCollections.displayApproveItems();
         System.out.println(ItemCollections.getApproveItems().size());
+        Invoice invoice = new Invoice();
 
         }
 }

@@ -62,8 +62,7 @@ public class Customer extends User {
                     break;
 
                 case "5":
-//
-
+                    System.out.println(invoice.getPay());
                     System.out.println("case 5");
                     break;
                 case "6":
