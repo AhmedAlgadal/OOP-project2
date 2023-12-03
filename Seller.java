@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Seller extends User {
 
     private ItemCollections itemColl;
-    private double money;
     private Scanner scanner;
     private String selection;
     private double rate;
@@ -15,8 +14,8 @@ public class Seller extends User {
         itemColl = new ItemCollections();
     }
 
-    public Seller(int uId, String uName, String uEmail, String uPassword, boolean isActive, double money) {
-        super(uId, uName, uEmail, uPassword, isActive, money);
+    public Seller(int uId, String uName, String uEmail, String uPassword, boolean isActive, double balance) {
+        super(uId, uName, uEmail, uPassword, isActive, balance);
         scanner = new Scanner(System.in);
         itemColl = new ItemCollections();
     }
@@ -53,6 +52,7 @@ public class Seller extends User {
                 case "4":
                 // ------------------
                 System.out.println("case 4");
+                System.out.println("Your Balance is: "+ this.getuBalance());
                     break;
                 case "5":
                     System.out.println("Exiting Seller Interface...");

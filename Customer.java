@@ -63,7 +63,8 @@ public class Customer extends User {
                     break;
 
                 case "5":
-                    System.out.println(invoice.getInvoice());;
+                    System.out.println(invoice.getInvoice());
+                    ;
                     break;
                 case "6":
                     // ------------------
@@ -109,6 +110,7 @@ public class Customer extends User {
 
     public void buyProducts() {
         // -- update the balance and item qut and Seller money ++.
+        ArrayList<Item> Aitems = ItemCollections.getApproveItems();
         ItemCollections.displayApproveItems();
         System.out.println("choose Item to buy:");
         int s;
@@ -131,22 +133,23 @@ public class Customer extends User {
             return;
         }
 
-        if (ItemCollections.getApproveItems().size() >= s && s > 0) {
+        if (Aitems.size() >= s && s > 0) {
 
-            System.out.println("your Item is: " + ItemCollections.getApproveItems(s - 1).getItemName());
-            if (quantity > 0 && quantity <= ItemCollections.getApproveItems(s - 1).getQuantity()) {
-                double cost = quantity * ItemCollections.getApproveItems(s - 1).getPrice();
+            System.out.println("your Item is: " + Aitems.get(s - 1).getItemName());
+            if (quantity > 0 && quantity <= Aitems.get(s - 1).getQuantity()) {
+                double cost = quantity * Aitems.get(s - 1).getPrice();
                 if (cost <= this.getuBalance()) {
                     Item requiredItem = new Item();
-                    requiredItem.setItemNo(ItemCollections.getApproveItems(s - 1).getItemNo());
-                    requiredItem.setItemName(ItemCollections.getApproveItems(s - 1).getItemName());
-                    requiredItem.setPrice(ItemCollections.getApproveItems(s - 1).getPrice());
+                    requiredItem.setItemNo(Aitems.get(s - 1).getItemNo());
+                    requiredItem.setItemName(Aitems.get(s - 1).getItemName());
+                    requiredItem.setPrice(Aitems.get(s - 1).getPrice());
                     requiredItem.setQuantity(quantity);
-                    requiredItem.setSeller(ItemCollections.getApproveItems(s - 1).getSeller());
+                    requiredItem.setSeller(Aitems.get(s - 1).getSeller());
                     addBoughtItem(requiredItem);
                     setuBalance(getuBalance() - cost);
-                    ItemCollections.getApproveItems(s - 1)
-                            .setQuantity(ItemCollections.getApproveItems(s - 1).getQuantity() - quantity);
+                    Aitems.get(s - 1).getSeller().setuBalance(Aitems.get(s - 1).getSeller().getuBalance() + cost);
+                    Aitems.get(s - 1)
+                            .setQuantity(Aitems.get(s - 1).getQuantity() - quantity);
                     System.out.println("The payment is successfully done!");
                     System.out.println("Now your Balance is: " + this.getuBalance());
                 } else {
@@ -165,6 +168,7 @@ public class Customer extends User {
 
     public void deleteOrder() {
         // ++ update the balance and item qut and Seller money --.
+        ArrayList<Item> Aitems = ItemCollections.getApproveItems();
         displayOrders();
         System.out.println("choose Order to delete:");
         int order;
@@ -190,23 +194,29 @@ public class Customer extends User {
         if (getBoughtItem().size() >= order && order > 0) {
 
             if (getBoughtItem(order - 1).getQuantity() >= quantity) {
-
+            double cost = quantity * getBoughtItem(order - 1).getPrice();
                 if (getBoughtItem(order - 1).getQuantity() == quantity) {
                     System.out.println(getBoughtItem(order - 1).getItemName() + " is now removed");
                     // update balance after delete order
-                    this.setuBalance(getuBalance() + (quantity * getBoughtItem(order - 1).getPrice()));
-                    ItemCollections.storeItem(getBoughtItem(order-1));
-                    getBoughtItem(order-1).setApprove(true);
-                    ItemCollections.addApprovedItem(getBoughtItem(order-1));
+                    this.setuBalance(getuBalance() + cost);
+
+                    Aitems.get(order - 1).getSeller().setuBalance(Aitems.get(order - 1).getSeller().getuBalance()
+                            - cost);
+
+                    ItemCollections.storeItem(getBoughtItem(order - 1));
+                    getBoughtItem(order - 1).setApprove(true);
+                    ItemCollections.addApprovedItem(getBoughtItem(order - 1));
                     removeBoughtItem(order - 1);
                 } else {
                     getBoughtItem(order - 1).setQuantity(getBoughtItem(order - 1).getQuantity() - quantity);
                     // update balance after delete order
-                    this.setuBalance(getuBalance() + (quantity * getBoughtItem(order - 1).getPrice()));
-                    ItemCollections.storeItem(getBoughtItem(order-1));
-                    ItemCollections.addApprovedItem(getBoughtItem(order-1));
-                    getBoughtItem(order-1).setApprove(true);
-                    
+                    this.setuBalance(getuBalance() + cost);
+                    Aitems.get(order - 1).getSeller().setuBalance(Aitems.get(order - 1).getSeller().getuBalance()
+                            - cost);
+                    ItemCollections.storeItem(getBoughtItem(order - 1));
+                    ItemCollections.addApprovedItem(getBoughtItem(order - 1));
+                    getBoughtItem(order - 1).setApprove(true);
+
                     System.out.println(getBoughtItem(order - 1).getItemName() + " is update now.");
                 }
             } else {
@@ -251,7 +261,7 @@ public class Customer extends User {
 
     }
 
-    public void rateSeller(){
+    public void rateSeller() {
         displayOrders();
         System.out.println("choose Item to Rate it's Seller:");
         int order;
@@ -276,10 +286,11 @@ public class Customer extends User {
         }
 
         if (getBoughtItem().size() >= order && order > 0) {
-            if(rate>=1 && rate<=5){
-            getBoughtItem(order-1).getSeller().setRate(rate);
-            System.out.println("You Rate your Seller "+ getBoughtItem(order-1).getSeller().getuName()+ " : "+ getBoughtItem(order-1).getSeller().getRate());
-            }else{
+            if (rate >= 1 && rate <= 5) {
+                getBoughtItem(order - 1).getSeller().setRate(rate);
+                System.out.println("You Rate your Seller " + getBoughtItem(order - 1).getSeller().getuName() + " : "
+                        + getBoughtItem(order - 1).getSeller().getRate());
+            } else {
                 System.out.println("out of range (1-5)");
             }
         } else {
