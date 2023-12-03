@@ -160,9 +160,11 @@ public class XYZShop {
             if (user.getuEmail().equals(email) && user.getuPassword().equals(password)) {
                 found = true;
                 if (user instanceof Customer/* && user.getActive() */) {
-                    customer.showCustomerBoard();
+                    Customer c = (Customer) user;
+                    c.showCustomerBoard();
                 } else if (user instanceof Seller) {
-                    seller.showSellerBoard();
+                    Seller s = (Seller) user;
+                    s.showSellerBoard();
                 } else if (user instanceof Admin) {
                     admin.showAdminBoard();
                 }

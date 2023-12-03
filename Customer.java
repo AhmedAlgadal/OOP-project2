@@ -145,7 +145,7 @@ public class Customer extends User {
                     requiredItem.setPrice(Aitems.get(s - 1).getPrice());
                     requiredItem.setQuantity(quantity);
                     requiredItem.setSeller(Aitems.get(s - 1).getSeller());
-                    addBoughtItem(requiredItem);
+                    this.addBoughtItem(requiredItem);
                     setuBalance(getuBalance() - cost);
                     Aitems.get(s - 1).getSeller().setuBalance(Aitems.get(s - 1).getSeller().getuBalance() + cost);
                     Aitems.get(s - 1)

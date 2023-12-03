@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Seller extends User {
 
-    private ItemCollections itemColl;
+    // private ItemCollections itemColl;
     private Scanner scanner;
     private String selection;
     private double rate;
@@ -11,13 +11,13 @@ public class Seller extends User {
 
     public Seller() {
         scanner = new Scanner(System.in);
-        itemColl = new ItemCollections();
+        // itemColl = new ItemCollections();
     }
 
     public Seller(int uId, String uName, String uEmail, String uPassword, boolean isActive, double balance) {
         super(uId, uName, uEmail, uPassword, isActive, balance);
         scanner = new Scanner(System.in);
-        itemColl = new ItemCollections();
+        // itemColl = new ItemCollections();
     }
 
     public void showSellerBoard() {
@@ -52,6 +52,7 @@ public class Seller extends User {
                 case "4":
                 // ------------------
                 System.out.println("case 4");
+                System.out.println("Your name is:"+ this.getuName());
                 System.out.println("Your Balance is: "+ this.getuBalance());
                     break;
                 case "5":
@@ -94,11 +95,10 @@ public class Seller extends User {
         }
         item.setQuantity(s2);
         item.setItemNo(Item.getItemCount());
-        ItemCollections.storeItem(item);
         // will set this Seller as the seller of the item.
         item.setSeller(this);
+        ItemCollections.storeItem(item);
         System.out.println("add done.");
-        scanner.nextLine();
 
     }
 //    public void addNewItem(Item item) {
