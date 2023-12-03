@@ -11,6 +11,7 @@ public class Item {
 
 
     public Item() {
+        // seller = new Seller();
     }
 
     public Item(int itemNo, String itemName, double price, int quantity,boolean isApprove, Seller seller) {
@@ -19,7 +20,9 @@ public class Item {
         this.price = price;
         this.quantity = quantity;
         this.isApprove = isApprove;
+        // seller = new Seller();
         this.seller = seller;
+
     }
 
     public int getItemNo() {

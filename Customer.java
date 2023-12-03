@@ -12,7 +12,7 @@ public class Customer extends User {
     private Invoice invoice;
 
     public Customer() {
-        invoice = new Invoice();
+        invoice = new Invoice(this);
         boughtItem = new ArrayList<Item>();
         itemColl = new ItemCollections();
         scanner = new Scanner(System.in);
@@ -24,6 +24,7 @@ public class Customer extends User {
         // this.balance= balance;
         boughtItem = new ArrayList<Item>();
         scanner = new Scanner(System.in);
+        this.invoice = new Invoice(this);
         // itemColl= new ItemCollections();
     }
 
@@ -62,8 +63,7 @@ public class Customer extends User {
                     break;
 
                 case "5":
-                    System.out.println(invoice.getPay());
-                    System.out.println("case 5");
+                    System.out.println(invoice.getInvoice());;
                     break;
                 case "6":
                     // ------------------
@@ -142,6 +142,7 @@ public class Customer extends User {
                     requiredItem.setItemName(ItemCollections.getApproveItems(s - 1).getItemName());
                     requiredItem.setPrice(ItemCollections.getApproveItems(s - 1).getPrice());
                     requiredItem.setQuantity(quantity);
+                    requiredItem.setSeller(ItemCollections.getApproveItems(s - 1).getSeller());
                     addBoughtItem(requiredItem);
                     setuBalance(getuBalance() - cost);
                     ItemCollections.getApproveItems(s - 1)
@@ -194,12 +195,17 @@ public class Customer extends User {
                     System.out.println(getBoughtItem(order - 1).getItemName() + " is now removed");
                     // update balance after delete order
                     this.setuBalance(getuBalance() + (quantity * getBoughtItem(order - 1).getPrice()));
+                    ItemCollections.storeItem(getBoughtItem(order-1));
+                    getBoughtItem(order-1).setApprove(true);
+                    ItemCollections.addApprovedItem(getBoughtItem(order-1));
                     removeBoughtItem(order - 1);
                 } else {
                     getBoughtItem(order - 1).setQuantity(getBoughtItem(order - 1).getQuantity() - quantity);
                     // update balance after delete order
                     this.setuBalance(getuBalance() + (quantity * getBoughtItem(order - 1).getPrice()));
-                    
+                    ItemCollections.storeItem(getBoughtItem(order-1));
+                    ItemCollections.addApprovedItem(getBoughtItem(order-1));
+                    getBoughtItem(order-1).setApprove(true);
                     
                     System.out.println(getBoughtItem(order - 1).getItemName() + " is update now.");
                 }
@@ -270,13 +276,16 @@ public class Customer extends User {
         }
 
         if (getBoughtItem().size() >= order && order > 0) {
-
+            if(rate>=1 && rate<=5){
             getBoughtItem(order-1).getSeller().setRate(rate);
             System.out.println("You Rate your Seller "+ getBoughtItem(order-1).getSeller().getuName()+ " : "+ getBoughtItem(order-1).getSeller().getRate());
+            }else{
+                System.out.println("out of range (1-5)");
+            }
         } else {
             System.out.println("this product does not exist");
         }
-        }
+    }
 
     public void addBoughtItem(Item boughtItem) {
         this.boughtItem.add(boughtItem);

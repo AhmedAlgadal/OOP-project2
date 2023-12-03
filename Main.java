@@ -2,8 +2,8 @@
 public class Main {
   public static void main(String[] args) {
 
-//         XYZShop shop = new XYZShop();
-//         shop.showShopBoard();
+        // XYZShop shop = new XYZShop();
+        // shop.showShopBoard();
 //         Admin admin = new Admin();
 //         admin.showAdminBoard();
 //         Seller s = new Seller();
@@ -15,14 +15,13 @@ public class Main {
         Item i2 = new Item(2, "bbb", 20, 2, false,ss1);
         Item i3 = new Item(3, "ccc", 30, 3, true,ss2);
         Item i4 = new Item(4, "ddd", 40, 4, false,ss2);
-        Item i5 = new Item(5, "eee", 50, 0, true,ss1);
+        Item i5 = new Item(5, "eee", 50, 2, true,ss1);
 
-        ItemCollections itemColl = new ItemCollections();
-        itemColl.storeItem(i1);
-        itemColl.storeItem(i2);
-        itemColl.storeItem(i3);
-        itemColl.storeItem(i4);
-        itemColl.storeItem(i5);
+        ItemCollections.storeItem(i1);
+        ItemCollections.storeItem(i2);
+        ItemCollections.storeItem(i3);
+        ItemCollections.storeItem(i4);
+        ItemCollections.storeItem(i5);
         ItemCollections.addApprovedItem(i1);
         ItemCollections.addApprovedItem(i3);
         ItemCollections.addApprovedItem(i5);
@@ -30,7 +29,8 @@ public class Main {
         c.showCustomerBoard();
         // ItemCollections.displayApproveItems();
         System.out.println(ItemCollections.getApproveItems().size());
-        Invoice invoice = new Invoice();
+        Invoice invoice = new Invoice(c);
+        ItemCollections.displayAllItems();
 
         }
 }

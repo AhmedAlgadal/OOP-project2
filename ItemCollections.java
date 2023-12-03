@@ -9,7 +9,7 @@ public class ItemCollections {
         approveitems = new ArrayList<Item>();
     }
 
-    public void storeItem(Item item) {
+    public static void storeItem(Item item) {
         items.add(item);
     }
 
