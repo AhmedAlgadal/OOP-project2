@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class UserCollections {
+public class UserCollections implements Serializable{
     private static ArrayList<User> users;
 
     public UserCollections(){
@@ -26,41 +27,51 @@ public class UserCollections {
 
     }
 
-    public static void displayAllUsers() {
+    public static String displayAllUsers() {
+        StringBuilder SBusers = new StringBuilder();
         int index=1;
         for (User user : users) {
             if(user.getuId()!= 123){
-        System.out.println("#" + index + " User Name: " + user.getuName() + " User Email: " + user.getuEmail() +
-                " User ID: " +user.getuId()+ " User Active: " + user.getActive());
-        System.out.println("==================================================");
-        index++;
+            SBusers.append("#" + index + " User Name: " + user.getuName() + " User Email: " + user.getuEmail() +
+                " User ID: " +user.getuId()+ " User Active: " + user.getActive()+"\n");
+            SBusers.append("==================================================\n");
+            index++;
             }
-            }
-            }
+        }
+        return SBusers.toString();
+    }
 
-    public static void displayAllCustomers() {
+    public static String displayAllCustomers() {
+        StringBuilder customers = new StringBuilder();
         int index=1;
         for (User user : users) {
             if (user instanceof Customer){
-        System.out.println("#" + index + " User Name: " + user.getuName() + " User Email: " + user.getuEmail() +
-                " User ID: " +user.getuId()+ " User Active: " + user.getActive());
-        System.out.println("==================================================");
+            customers.append("#" + index + " User Name: " + user.getuName() + " User Email: " + user.getuEmail() +
+            " User ID: " +user.getuId()+ " User Active: " + user.getActive()+"\n");
+            customers.append("==================================================\n");
+            index++;
             }
-            }
-            }
-    public static void displayAllSellers() {
+        }
+        return customers.toString();
+    }
+
+    public static String displayAllSellers() {
+        StringBuilder sellers = new StringBuilder();
         int index = 1;
         for (User user : users) {
             if(user instanceof Seller){
-        System.out.println("#" + index + " User Name: " + user.getuName() + " User Email: " + user.getuEmail() +
-                " User ID: " +user.getuId()+ " User Active: " + user.getActive());
-        System.out.println("==================================================");
+            sellers.append("#" + index + " User Name: " + user.getuName() + " User Email: " + user.getuEmail() +
+                " User ID: " +user.getuId()+ " User Active: " + user.getActive()+"\n");
+            sellers.append("==================================================\n");
+            index++;
+            }
         }
-            }
-            }
+        return sellers.toString();
+    }
 
 
-    public static void displayTop3Seller(){
+    public static String displayTop3Seller(){
+        StringBuilder SBsellers = new StringBuilder();
         ArrayList<Seller> sellers = new ArrayList<>();
         for (User user : getUser()){
             if (user instanceof Seller){
@@ -74,20 +85,25 @@ public class UserCollections {
         if(sellers.size()>= 3){
             int index =1;
             for(int i = 0; i < 3; i++) {
-            System.out.println("#"+ index+" Seller Name: " + sellers.get(i).getuName() + ", Balance: " + sellers.get(i).getuBalance());
+            SBsellers.append("#"+ index+" Seller Name: " + sellers.get(i).getuName() + ", Balance: " + sellers.get(i).getuBalance()+"\n");
             index++;
             }
         }else{
             int index =1;
             for(Seller seller : sellers) {
-            System.out.println("#"+ index+" Seller Name: " + seller.getuName() + ", Balance: " + seller.getuBalance());
+            SBsellers.append("#"+ index+" Seller Name: " + seller.getuName() + ", Balance: " + seller.getuBalance()+"\n");
             index++;
             }
 
         }
+        return SBsellers.toString();
     }
 
 
+    public static void setUsers(ArrayList<User> users) {
+        UserCollections.users = users;
+    }
+    
     public static User getUsers(int n) {
         return users.get(n);
     }

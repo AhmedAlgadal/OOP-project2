@@ -1,4 +1,5 @@
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class XYZShop {
     String name;
@@ -15,6 +16,8 @@ public class XYZShop {
         scanner = new Scanner(System.in);
         userColl = new UserCollections();
         admin = new Admin();
+        readUsers();
+        readItems();
 
         userColl.storeUser(admin.setAdminCredentials());
     }
@@ -34,9 +37,10 @@ public class XYZShop {
                 case "1":
                     // --------------
                     login();
-                    // admin.adminBoard();
                     break;
                 case "2":
+                    writeUsers();
+                    writeItems();
                     logout();
                     break;
                 case "3":
@@ -121,52 +125,27 @@ public class XYZShop {
         userColl.storeUser(u);
     }
 
-    // public void login() {
-    // System.out.println("Enter your User name:");
-    // String name = scanner.nextLine();
-    // System.out.println("Enter your Password:");
-    // String password = scanner.nextLine();
-
-    // if (name.equals("admin") && password.equals("root")) {
-    // admin.adminBoard();
-    // return;
-    // }
-    // for (User user : UserCollections.users) {
-    // if (user.getuName().equals(name) && user.getuPassword().equals(password) &&
-    // user instanceof Customer && user.getActive()) {
-    // customer.CustomerBoard();
-    // } else if (user.getuName().equals(name) &&
-    // user.getuPassword().equals(password) && user instanceof Seller) {
-    // seller.sellerBoard();
-    // } else {
-    // System.out.println("Wrong Username or password");
-    // }
-    // }
-
-    // }
     public void login() {
         System.out.println("Enter your Email:");
         String email = scanner.nextLine();
         System.out.println("Enter your Password:");
         String password = scanner.nextLine();
 
-        // if (email.equals("admin1@xyzshop.com") && password.equals("root")) {
-        // admin.adminBoard();
-        // return;
-        // }
 
         boolean found = false;
         for (User user : UserCollections.getUser()) {
             if (user.getuEmail().equals(email) && user.getuPassword().equals(password)) {
                 found = true;
-                if (user instanceof Customer/* && user.getActive() */) {
+                if (user instanceof Customer && user.getActive() ) {
                     Customer c = (Customer) user;
                     c.showCustomerBoard();
-                } else if (user instanceof Seller) {
+                } else if (user instanceof Seller && user.getActive()) {
                     Seller s = (Seller) user;
                     s.showSellerBoard();
                 } else if (user instanceof Admin) {
                     admin.showAdminBoard();
+                }else if(!user.getActive()){
+                    System.out.println("Please wait you not Active yet,The Admin will Activate you soon.");
                 }
                 break;
             }
@@ -181,6 +160,68 @@ public class XYZShop {
 
         System.out.println("Logout successful. Thank you for your valuable contributions.");
         System.exit(0);
+
+    }
+
+    public void writeUsers() {
+        ArrayList<User> writeUsers = UserCollections.getUser();
+
+        try {
+            FileOutputStream fileout = new FileOutputStream("UsersInfo.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileout);
+            out.writeObject(writeUsers);
+            fileout.close();
+            out.close();
+            System.out.println("Success");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+    public void writeItems() {
+        ArrayList<Item> writeItems = ItemCollections.getItems();
+        try {
+            FileOutputStream fileout = new FileOutputStream("ItemsInfo.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileout);
+            out.writeObject(writeItems);
+            fileout.close();
+            out.close();
+            System.out.println("Success");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+
+    public void readUsers() {
+        try {
+            FileInputStream filein = new FileInputStream("UsersInfo.ser");
+            ObjectInputStream in = new ObjectInputStream(filein);
+            ArrayList<User> users = (ArrayList<User>) in.readObject();
+
+            UserCollections.setUsers(users);
+            System.out.println("Success");
+            filein.close();
+            in.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+
+    public void readItems() {
+        try {
+            FileInputStream filein = new FileInputStream("ItemsInfo.ser");
+            ObjectInputStream in = new ObjectInputStream(filein);
+            ArrayList<Item> items = (ArrayList<Item>) in.readObject();
+
+            ItemCollections.setItems(items);
+            System.out.println("Success");
+            filein.close();
+            in.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }
 

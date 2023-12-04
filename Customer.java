@@ -111,7 +111,7 @@ public class Customer extends User {
     public void buyProducts() {
         // -- update the balance and item qut and Seller money ++.
         ArrayList<Item> Aitems = ItemCollections.getApproveItems();
-        ItemCollections.displayApproveItems();
+        System.out.println(ItemCollections.displayApproveItems());
         System.out.println("choose Item to buy:");
         int s;
         String g = scanner.nextLine().trim();
@@ -228,17 +228,6 @@ public class Customer extends User {
 
     }
 
-    // public void displayProducts() {
-    // int index = 1;
-    // for (Item item : boughtItem) {
-    // if (item.getQuantity() == 0) {
-    // System.out.println("#" + index + " " + item.getItemName() + " out of stock");
-    // } else {
-    // System.out.println("#" + index + " " + item.getItemName());
-    // }
-    // index++;
-    // }
-    // }
 
     public void displayBalance() {
         System.out.println("Now your Balance is: " + this.getuBalance());

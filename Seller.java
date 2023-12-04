@@ -50,6 +50,7 @@ public class Seller extends User {
                     break;
                 case "4":
                     // ------------------
+                    System.out.println();
                     displayStatistics();
                     break;
                 case "5":
@@ -99,10 +100,6 @@ public class Seller extends User {
         System.out.println("add done.");
 
     }
-    // public void addNewItem(Item item) {
-    // products.add(item);
-    // System.out.println("New item added successfully.");
-    // }
 
     public void removeItem() {
         this.displayAllItems();
@@ -123,51 +120,6 @@ public class Seller extends User {
             removeProducts(s-1);
         } else {
             System.out.println("this product does not exist");
-        }
-    }
-    // public void updateProducts(Item item, int quantityChange) {
-    // boolean itemFound = false;
-    // int indexToUpdate = -1;
-    //
-    // for (int i = 0; i < products.size(); i++) {
-    // if (products.get(i).getItemNo().equals(item.getItemNo())) {
-    // itemFound = true;
-    // indexToUpdate = i;
-    // break;
-    // }
-    // }
-    //
-    // if (itemFound) {
-    // int newQuantity = products.get(indexToUpdate).getQuantity() + quantityChange;
-    //
-    // if (newQuantity >= 0) {
-    // products.get(indexToUpdate).setQuantity(newQuantity);
-    // System.out.println("Item quantity updated successfully.");
-    // } else {
-    // System.out.println("Insufficient stock to update item quantity.");
-    // }
-    // } else {
-    // System.out.println("Item not found.");
-    // }
-    // }
-    // public double calculateTotalEarnings() {
-    // double totalEarnings = 0.00;
-    //
-    // for (Item item : products) {
-    // totalEarnings += item.getPrice() * item.getBoughtTimes();
-    // }
-    //
-    // return totalEarnings;
-    // }
-
-    public void displayProducts() {
-        int index = 1;
-        for (Item item :getProducts()) {
-            System.out.println("#" + index + " Item Name: " + item.getItemName() + " Item price: "
-                    + item.getPrice() +
-                    " Item quantity: " + item.getQuantity() + " Item Approve: " + item.getApprove()+ " Seller: "+ item.getSeller().getuName());
-            System.out.println("================================================================================");
-            index++;
         }
     }
 
@@ -231,7 +183,7 @@ public class Seller extends User {
         System.out.println("\n Your name: " + getuName()+ " Your Email : "+ getuEmail());
         System.out.println("Your Balance: "+ getuBalance());
         System.out.println("Your Products: ");
-        displayProducts();
+        displayAllItems();
     }
 
 }

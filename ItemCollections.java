@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ItemCollections {
+public class ItemCollections implements Serializable{
     private static ArrayList<Item> items = new ArrayList<Item>();
     private static ArrayList<Item> approveitems = new ArrayList<Item>();
     
@@ -9,30 +10,38 @@ public class ItemCollections {
         items.add(item);
     }
 
-    public static void displayAllItems() {
+    public static String displayAllItems() {
+        StringBuilder SBitems = new StringBuilder();
         int index = 1;
         for (Item item : items) {
 
-            System.out.println("#" + index + " Item Name: " + item.getItemName() + " Item price: "
+            SBitems.append("#" + index + " Item Name: " + item.getItemName() + " Item price: "
                     + item.getPrice() +
-                    " Item quantity: " + item.getQuantity() + " Item Approve: " + item.getApprove()+ " Seller: "+ item.getSeller().getuName());
-            System.out.println("================================================================================");
+                    " Item quantity: " + item.getQuantity() + " Item Approve: " + item.getApprove()+ " Seller: "+ item.getSeller().getuName()+"\n");
+            SBitems.append("================================================================================\n");
             index++;
         }
+        return SBitems.toString();
     }
 
-    public static void displayApproveItems() {
+    public static String displayApproveItems() {
+        StringBuilder SBitems = new StringBuilder();
         int index = 1;
         for (Item item : items) {
             if (item.getApprove()) {
-                System.out.println("#" + index + " Item Name: " + item.getItemName() + " Item price: "
+                SBitems.append("#" + index + " Item Name: " + item.getItemName() + " Item price: "
                         + item.getPrice() +
-                        " Item quantity: " + item.getQuantity()+" Seller: "+ item.getSeller().getuName());
-                System.out.println("======================================================================");
+                        " Item quantity: " + item.getQuantity()+" Seller: "+ item.getSeller().getuName()+"\n");
+                SBitems.append("======================================================================\n");
                 index++;
 
             }
         }
+        return SBitems.toString();
+    }
+
+    public static void setItems(ArrayList<Item> items) {
+        ItemCollections.items = items;
     }
 
     public static ArrayList<Item> getItems() {

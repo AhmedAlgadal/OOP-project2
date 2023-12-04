@@ -1,8 +1,7 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.*;
 
-public class Admin extends User {
+public class Admin extends User implements Serializable {
 
     Scanner scanner = new Scanner(System.in);
     String selection;
@@ -80,7 +79,7 @@ public class Admin extends User {
 
     private void activateUser() {
         // Implement code to activate a user
-        UserCollections.displayAllUsers();
+        System.out.println(UserCollections.displayAllUsers());
         System.out.println("Choose the User number to activate it:");
         int s;
         String g = scanner.nextLine().trim();
@@ -110,27 +109,27 @@ public class Admin extends User {
 
     public void displayAllProducts() {
         // Implement code to display all products
-        ItemCollections.displayAllItems();
+       System.out.println( ItemCollections.displayAllItems());
     }
 
     public void displayAllUsers() {
 
-        UserCollections.displayAllUsers();
+        System.out.println(UserCollections.displayAllUsers());
     }
 
     public void displayCustomers() {
         // Implement code to display customers
-        UserCollections.displayAllCustomers();
+        System.out.println(UserCollections.displayAllCustomers());
     }
 
     public void displaySellers() {
         // Implement code to display sellers
-        UserCollections.displayAllSellers();
+        System.out.println(UserCollections.displayAllSellers());
     }
 
     public void approveProducts() {
         // Implement code to approve products
-        ItemCollections.displayAllItems();
+        System.out.println(ItemCollections.displayAllItems());
         System.out.println("Choose the Item number to approve it:");
         int s;
         String g = scanner.nextLine().trim();
@@ -155,7 +154,7 @@ public class Admin extends User {
 
     public void removeUsers() {
         // Implement code to remove users
-        UserCollections.displayAllUsers();
+        System.out.println(UserCollections.displayAllUsers());
         System.out.println("Choose the User ID to remove it:");
         int s;
         String g = scanner.nextLine().trim();
@@ -177,7 +176,7 @@ public class Admin extends User {
 
     public void removeProducts() {
         // Implement code to remove products
-        ItemCollections.displayAllItems();
+        System.out.println(ItemCollections.displayAllItems());
         System.out.println("Choose the Item number to remove it:");
         int s;
         String g = scanner.nextLine().trim();
@@ -200,13 +199,17 @@ public class Admin extends User {
     public void displayStatistics() {
         // Implement code to display statistics
         System.out.println("----------------The Sellers--------------");
-        UserCollections.displayAllSellers();
+        System.out.println(UserCollections.displayAllSellers());
+        
         System.out.println("\n----------------The Customers------------");
-        UserCollections.displayAllCustomers();
+        System.out.println(UserCollections.displayAllCustomers());
+        
         System.out.println("\n----------------The Items----------------");
-        ItemCollections.displayAllItems();
+        System.out.println(ItemCollections.displayAllItems());
+        
         System.out.println("\n----------------The Top 3 Sellers--------");
-        UserCollections.displayTop3Seller();
+        System.out.println(UserCollections.displayTop3Seller());
+        
     }
 
     public Admin setAdminCredentials() {
@@ -236,4 +239,6 @@ public class Admin extends User {
         }
         return admin;
     }
+
+
 }
