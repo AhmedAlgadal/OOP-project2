@@ -199,7 +199,14 @@ public class Admin extends User {
 
     public void displayStatistics() {
         // Implement code to display statistics
-        System.out.println("\nImplement code to display statistics\n");
+        System.out.println("----------------The Sellers--------------");
+        UserCollections.displayAllSellers();
+        System.out.println("\n----------------The Customers------------");
+        UserCollections.displayAllCustomers();
+        System.out.println("\n----------------The Items----------------");
+        ItemCollections.displayAllItems();
+        System.out.println("\n----------------The Top 3 Sellers--------");
+        UserCollections.displayTop3Seller();
     }
 
     public Admin setAdminCredentials() {

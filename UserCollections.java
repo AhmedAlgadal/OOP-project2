@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class UserCollections {
     private static ArrayList<User> users;
@@ -57,6 +58,34 @@ public class UserCollections {
         }
             }
             }
+
+
+    public static void displayTop3Seller(){
+        ArrayList<Seller> sellers = new ArrayList<>();
+        for (User user : getUser()){
+            if (user instanceof Seller){
+                Seller s = (Seller)user;
+                sellers.add(s);
+            }
+        }
+
+        Collections.sort(sellers, (s1, s2) -> Double.compare(s2.getuBalance(), s1.getuBalance())); 
+
+        if(sellers.size()>= 3){
+            int index =1;
+            for(int i = 0; i < 3; i++) {
+            System.out.println("#"+ index+" Seller Name: " + sellers.get(i).getuName() + ", Balance: " + sellers.get(i).getuBalance());
+            index++;
+            }
+        }else{
+            int index =1;
+            for(Seller seller : sellers) {
+            System.out.println("#"+ index+" Seller Name: " + seller.getuName() + ", Balance: " + seller.getuBalance());
+            index++;
+            }
+
+        }
+    }
 
 
     public static User getUsers(int n) {

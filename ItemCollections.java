@@ -4,10 +4,6 @@ public class ItemCollections {
     private static ArrayList<Item> items = new ArrayList<Item>();
     private static ArrayList<Item> approveitems = new ArrayList<Item>();
     
-    public ItemCollections() {
-        // items = new ArrayList<Item>();
-        // approveitems = new ArrayList<Item>();
-    }
 
     public static void storeItem(Item item) {
         items.add(item);
